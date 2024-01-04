@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".HomeActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/btn_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginVertical="@dimen/home_margin"
+        android:layout_marginHorizontal="@dimen/about_margin"
+        android:background="@drawable/shape_rectangle_white"
+        android:paddingVertical="@dimen/_7sdp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageView
+                android:id="@+id/app_logo"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="0dp"
+                android:src="@drawable/logo"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toTopOf="@+id/btn_new_game"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btn_new_game"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_35sdp"
+                   android:layout_marginVertical="@dimen/_3sdp"
+                android:background="@drawable/rectangle_dark_blue"
+                android:elevation="20dp"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/new_game"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/mid_btn"
+                app:layout_constraintBottom_toTopOf="@+id/btn_load_game"
+                app:layout_constraintEnd_toEndOf="@+id/app_logo"
+                app:layout_constraintStart_toStartOf="@+id/app_logo"
+                app:layout_constraintTop_toBottomOf="@+id/app_logo" />
+
+            <Button
+                android:id="@+id/btn_load_game"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_35sdp"
+              android:layout_marginVertical="@dimen/_3sdp"
+                android:background="@drawable/rectangle_sky_blue"
+                android:elevation="20dp"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:textAllCaps="true"
+                android:text="@string/how_to_play"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/mid_btn"
+                app:layout_constraintBottom_toTopOf="@+id/btn_settings"
+                app:layout_constraintEnd_toEndOf="@+id/btn_new_game"
+                app:layout_constraintStart_toStartOf="@+id/btn_new_game"
+                app:layout_constraintTop_toBottomOf="@+id/btn_new_game" />
+
+            <Button
+                android:id="@+id/btn_settings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_35sdp"
+              android:layout_marginVertical="@dimen/_3sdp"
+                android:background="@drawable/rectangle_yellow"
+                android:elevation="20dp"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/settings"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/mid_btn"
+                app:layout_constraintBottom_toTopOf="@+id/btn_Score_board"
+                app:layout_constraintEnd_toEndOf="@+id/btn_load_game"
+      
+                app:layout_constraintStart_toStartOf="@+id/btn_load_game"
+                app:layout_constraintTop_toBottomOf="@+id/btn_load_game" />
+
+            <Button
+                android:id="@+id/btn_Score_board"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_35sdp"
+              android:layout_marginVertical="@dimen/_3sdp"
+                android:background="@drawable/rectangle_pink"
+                android:elevation="20dp"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/Score_board"
+                android:textColor="#FFFFFF"
+                android:textAllCaps="true"
+                android:textSize="@dimen/mid_btn"
+                app:layout_constraintBottom_toTopOf="@+id/btn_About"
+                app:layout_constraintEnd_toEndOf="@+id/btn_settings"
+      
+                app:layout_constraintStart_toStartOf="@+id/btn_settings"
+                app:layout_constraintTop_toBottomOf="@+id/btn_settings" />
+
+            <Button
+                android:id="@+id/btn_About"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_35sdp"
+              android:layout_marginVertical="@dimen/_3sdp"
+                android:background="@drawable/rectangle_red"
+                android:elevation="20dp"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/about"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/mid_btn"
+                app:layout_constraintBottom_toTopOf="@+id/rate"
+                app:layout_constraintEnd_toEndOf="@+id/btn_Score_board"
+                app:layout_constraintStart_toStartOf="@+id/btn_Score_board"
+                app:layout_constraintTop_toBottomOf="@+id/btn_Score_board" />
+
+            <Button
+                android:id="@+id/rate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_35sdp"
+              android:layout_marginVertical="@dimen/_3sdp"
+                android:background="@drawable/rectangle_voilet"
+                android:elevation="20dp"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/rate"
+                android:textColor="#FFFFFF"
+                android:textAllCaps="true"
+                android:textSize="@dimen/mid_btn"
+                app:layout_constraintBottom_toTopOf="@+id/btn_moregames"
+                app:layout_constraintEnd_toEndOf="@+id/btn_About"
+                app:layout_constraintStart_toStartOf="@+id/btn_About"
+                app:layout_constraintTop_toBottomOf="@+id/btn_About" />
+
+            <Button
+                android:id="@+id/btn_moregames"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_35sdp"
+              android:layout_marginVertical="@dimen/_3sdp"
+                android:background="@drawable/rectangle_brown"
+                android:elevation="20dp"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/more_games"
+                android:textColor="#FFFFFF"
+                android:textAllCaps="true"
+                android:textSize="@dimen/mid_btn"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rate" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

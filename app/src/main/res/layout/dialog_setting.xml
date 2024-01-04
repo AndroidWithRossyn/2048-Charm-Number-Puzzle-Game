@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/_300sdp"
+    android:layout_height="@dimen/_350sdp"
+    android:background="@drawable/popup_background"
+    android:padding="@dimen/_28sdp">
+
+    <TextView
+        android:id="@+id/setting_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/settings"
+        android:textSize="@dimen/large_txt"
+        android:textColor="@color/txt_color"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/close_button"
+        android:layout_below="@+id/setting_textview"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/_20sdp">
+
+        <TextView
+            android:id="@+id/textview_music"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="5dp"
+            android:text="@string/music"
+            android:textColor="@color/txt_color"
+            android:textSize="@dimen/mid_txt" />
+
+        <RadioGroup
+            android:id="@+id/radiogroup_music_select"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/_7sdp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <RadioButton
+                android:id="@+id/music_on"
+                style="@style/radioSwitchBtnOn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:paddingHorizontal="@dimen/_3sdp"
+                android:paddingVertical="@dimen/_10sdp"
+                android:text="@string/on"
+                android:textAlignment="center"
+                android:textColor="@color/txt_color"
+                android:textSize="@dimen/small_txt" />
+
+            <RadioButton
+                android:id="@+id/music_off"
+                style="@style/radioSwitchBtnOff"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:maxLines="1"
+                android:paddingHorizontal="@dimen/_3sdp"
+                android:paddingVertical="@dimen/_10sdp"
+                android:text="@string/off"
+                android:textAlignment="center"
+                android:textColor="@color/txt_color"
+                android:textSize="@dimen/small_txt" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textview_sound"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/txt_color"
+            android:layout_marginBottom="5dp"
+            android:text="@string/sound"
+            android:textSize="@dimen/mid_txt" />
+
+        <RadioGroup
+            android:id="@+id/radiogroup_sound_select"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="10dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <RadioButton
+                android:id="@+id/sound_on"
+                style="@style/radioSwitchBtnOn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:paddingHorizontal="@dimen/_3sdp"
+                android:paddingVertical="@dimen/_10sdp"
+                android:text="@string/on"
+                android:textAlignment="center"
+                android:textColor="@color/txt_color"
+                android:textSize="@dimen/small_txt" />
+
+            <RadioButton
+                android:id="@+id/sound_off"
+                style="@style/radioSwitchBtnOff"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:maxLines="1"
+                android:paddingHorizontal="@dimen/_3sdp"
+                android:paddingVertical="@dimen/_10sdp"
+                android:text="@string/off"
+                android:textAlignment="center"
+                android:textColor="@color/txt_color"
+                android:textSize="@dimen/small_txt" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/close_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:background="@drawable/rectangle_yellow"
+        android:paddingHorizontal="@dimen/_35sdp"
+        android:paddingVertical="@dimen/_3sdp"
+        android:text="@string/close"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/mid_btn" />
+
+</RelativeLayout>

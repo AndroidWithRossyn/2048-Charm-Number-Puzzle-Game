@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="false"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+      <item android:drawable="@drawable/shuffle_mode_1" android:duration="600"/>
+    <item android:drawable="@drawable/shuffle_mode_2" android:duration="600"/>
+    <item android:drawable="@drawable/shuffle_mode_4" android:duration="600"/>
+    <item android:drawable="@drawable/shuffle_mode_3" android:duration="600"/>
+</animation-list>

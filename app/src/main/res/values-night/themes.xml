@@ -1,0 +1,45 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="AppThemeNoBar" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
+        <item name="android:fontFamily">@font/baloo</item>
+
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="android:navigationBarColor" tools:targetApi="l">#000000</item>
+    </style>
+
+    <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_right_side</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_out_left_side</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_in_left_side</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_right_side</item>
+    </style>
+
+    <style name="radioSwitchBtnOff">
+        <item name="android:background">@drawable/radio_shape_btn_off</item>
+    </style>
+
+    <style name="radioSwitchBtnOn">
+        <item name="android:background">@drawable/radio_shape_btn_on</item>
+    </style>
+
+    <style name="radioSwitchBtnSquare">
+        <item name="android:background">@drawable/radio_shape_btn_square</item>
+    </style>
+
+    <style name="radioSwitchBtnRectangle">
+        <item name="android:background">@drawable/radio_shape_btn_rectangle</item>
+    </style>
+
+    <style name="ThemeWithCorners" parent="android:Theme.Dialog">
+        <item name="android:windowBackground">@drawable/game_background</item>
+    </style>
+
+    <style name="ThemeOverlay.2048.FullscreenContainer" parent="">
+        <item name="fullscreenBackgroundColor">@color/light_blue_900</item>
+        <item name="fullscreenTextColor">@color/light_blue_A400</item>
+    </style>
+</resources>

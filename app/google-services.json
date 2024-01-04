@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "932809051482",
+    "project_id": "merge-b11c8",
+    "storage_bucket": "merge-b11c8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:932809051482:android:bd38a0f49d8dee8cfff763",
+        "android_client_info": {
+          "package_name": "com.banrossyn.merge.game2048"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "932809051482-4s847r93riiq8knjnhkj5338ps3tefrr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-_VDktDkA-mxB2QqZpqRjFR1gtCgWPJY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "932809051482-4s847r93riiq8knjnhkj5338ps3tefrr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-4577382853353362~7804334878"
+    }
+  ],
+  "configuration_version": "1"
+}

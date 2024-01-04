@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/baloo</item>
+<!--        <item>@font/luckiest_guy</item>-->
+<!--        <item>@font/mouse_memoirs</item>-->
+<!--        <item>@font/rubik_black_italic</item>-->
+    </array>
+</resources>
