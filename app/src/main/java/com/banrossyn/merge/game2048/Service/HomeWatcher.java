@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Build;
 
 import com.banrossyn.merge.game2048.interfaces.OnHomePressedListener;
 
@@ -26,7 +27,9 @@ public class HomeWatcher {
 
     public void startWatch() {
         if (mRecevier != null) {
-            mContext.registerReceiver(mRecevier, mFilter);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                mContext.registerReceiver(mRecevier, mFilter, Context.RECEIVER_NOT_EXPORTED);
+            }
         }
     }
 

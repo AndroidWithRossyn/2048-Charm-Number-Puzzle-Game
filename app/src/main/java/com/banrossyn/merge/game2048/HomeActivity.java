@@ -1,11 +1,33 @@
+/*
+ * Copyright (C) 2023 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.banrossyn.merge.game2048;
 
+/**
+ * this project is under development
+ *
+ * @author BanRossyn
+ * @Email: banrossyn@gmail.com
+ * @Whatsapp :+919694260426
+ */
 
 import android.app.Dialog;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentSender;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -16,7 +38,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.PowerManager;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -32,105 +53,24 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.banrossyn.merge.game2048.GameCode.ScoreModel;
 import com.banrossyn.merge.game2048.GameCode.ScoreBoardBuilder;
+import com.banrossyn.merge.game2048.GameCode.ScoreModel;
 import com.banrossyn.merge.game2048.Service.HomeWatcher;
 import com.banrossyn.merge.game2048.Service.Music;
 import com.banrossyn.merge.game2048.adapter.ScoreAdapter;
 import com.banrossyn.merge.game2048.interfaces.OnHomePressedListener;
 import com.banrossyn.merge.game2048.util.Utils;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.play.core.appupdate.AppUpdateInfo;
-import com.google.android.play.core.appupdate.AppUpdateManager;
-import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
-import com.google.android.play.core.install.InstallStateUpdatedListener;
-import com.google.android.play.core.install.model.AppUpdateType;
-import com.google.android.play.core.install.model.InstallStatus;
-import com.google.android.play.core.install.model.UpdateAvailability;
-import com.google.android.play.core.review.ReviewInfo;
-import com.google.android.play.core.review.ReviewManager;
-import com.google.android.play.core.review.ReviewManagerFactory;
-import com.google.android.play.core.tasks.Task;
-import com.google.android.ump.ConsentForm;
-import com.google.android.ump.ConsentInformation;
-import com.google.android.ump.ConsentRequestParameters;
-import com.google.android.ump.UserMessagingPlatform;
 
 import java.util.ArrayList;
 import java.util.Objects;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class HomeActivity extends AppCompatActivity {
 
     HomeWatcher mHomeWatcher;
-    private ReviewInfo reviewInfo;
-    private ReviewManager manager;
-    AppUpdateManager appUpdateManager;
+
     Context update;
     private Utils utils;
-    private ConsentInformation consentInformation;
-    private final AtomicBoolean isMobileAdsInitializeCalled = new AtomicBoolean(false);
 
-
-    public void GDPRMessage() {
-//        ConsentDebugSettings debugSettings = new ConsentDebugSettings.Builder(this)
-//                .setDebugGeography(ConsentDebugSettings.DebugGeography.DEBUG_GEOGRAPHY_EEA)
-//                .addTestDeviceHashedId("4F45E161A3144238FA2A0869C6BB2EE1")
-//                .build();
-        // Set tag for under age of consent. false means users are not under age
-        // of consent.
-        ConsentRequestParameters params = new ConsentRequestParameters
-                .Builder()
-//                .setConsentDebugSettings(debugSettings)
-                .setTagForUnderAgeOfConsent(false)
-                .build();
-
-        consentInformation = UserMessagingPlatform.getConsentInformation(this);
-        consentInformation.requestConsentInfoUpdate(
-                this,
-                params,
-                (ConsentInformation.OnConsentInfoUpdateSuccessListener) () -> {
-                    UserMessagingPlatform.loadAndShowConsentFormIfRequired(
-                            this,
-                            (ConsentForm.OnConsentFormDismissedListener) loadAndShowError -> {
-                                if (loadAndShowError != null) {
-                                    // Consent gathering failed.
-                                    Log.w("TAG", String.format("%s: %s",
-                                            loadAndShowError.getErrorCode(),
-                                            loadAndShowError.getMessage()));
-                                }
-
-                                // Consent has been gathered.
-                                if (consentInformation.canRequestAds()) {
-                                    initializeMobileAdsSdk();
-                                }
-                            }
-                    );
-                },
-                (ConsentInformation.OnConsentInfoUpdateFailureListener) requestConsentError -> {
-                    // Consent gathering failed.
-                    Log.w("TAG", String.format("%s: %s",
-                            requestConsentError.getErrorCode(),
-                            requestConsentError.getMessage()));
-                });
-
-        // Check if you can initialize the Google Mobile Ads SDK in parallel
-        // while checking for new consent information. Consent obtained in
-        // the previous session can be used to request ads.
-        if (consentInformation.canRequestAds()) {
-            initializeMobileAdsSdk();
-        }
-    }
-
-
-    private void initializeMobileAdsSdk() {
-        if (isMobileAdsInitializeCalled.getAndSet(true)) {
-            return;
-        }
-        // Initialize the Google Mobile Ads SDK.
-        MobileAds.initialize(this);
-    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -144,11 +84,7 @@ public class HomeActivity extends AppCompatActivity {
 
         update = HomeActivity.this;
         hideSystemUI();
-        activateReviewInfo();
-        GDPRMessage();
 
-        appUpdateManager = AppUpdateManagerFactory.create(update);
-        UpdateApp();
         Animation btnScaleAnim = AnimationUtils.loadAnimation(HomeActivity.this, R.anim.scale_animation);
 
         Button btnNewGame = findViewById(R.id.btn_new_game);
@@ -195,7 +131,7 @@ public class HomeActivity extends AppCompatActivity {
         btnRate.startAnimation(btnScaleAnim);
         btnRate.setOnClickListener(v -> {
             playClick();
-            startReviewFlow();
+            Toast.makeText(this, "PlayStore URL", Toast.LENGTH_SHORT).show();
         });
 
         Button btnmoregames = findViewById(R.id.btn_moregames);
@@ -204,7 +140,6 @@ public class HomeActivity extends AppCompatActivity {
             playClick();
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.moregamesurl))));
         });
-
 
 
     }
@@ -444,7 +379,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void playClick() {
         final MediaPlayer click = MediaPlayer.create(HomeActivity.this, R.raw.click);
-        if(!utils.getBooleanValue(Utils.mute_sounds)){
+        if (!utils.getBooleanValue(Utils.mute_sounds)) {
             click.start();
         }
     }
@@ -549,17 +484,10 @@ public class HomeActivity extends AppCompatActivity {
         View mContentView = getWindow().getDecorView();
 
         if (Build.VERSION.SDK_INT >= 30) {
-            mContentView.getWindowInsetsController().hide(
-                    android.view.WindowInsets.Type.statusBars() | android.view.WindowInsets.Type.navigationBars());
+            mContentView.getWindowInsetsController().hide(android.view.WindowInsets.Type.statusBars() | android.view.WindowInsets.Type.navigationBars());
         } else {
 
-            mContentView.setSystemUiVisibility(
-                    View.SYSTEM_UI_FLAG_LOW_PROFILE
-                            | View.SYSTEM_UI_FLAG_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-            );
+            mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE | View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         }
 
 
@@ -569,71 +497,6 @@ public class HomeActivity extends AppCompatActivity {
     public void onWindowFocusChanged(boolean hasFocus) {
         hideSystemUI();
         super.onWindowFocusChanged(hasFocus);
-    }
-
-    void activateReviewInfo() {
-        manager = ReviewManagerFactory.create(this);
-        Task<ReviewInfo> managerInfoTask = manager.requestReviewFlow();
-        managerInfoTask.addOnCompleteListener((task) -> {
-            if (task.isSuccessful()) {
-                reviewInfo = task.getResult();
-
-            } else {
-
-                Toast.makeText(this, "Review failed to start", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
-    }
-
-    void startReviewFlow() {
-        if (reviewInfo != null) {
-            Task<Void> flow = manager.launchReviewFlow(this, reviewInfo);
-            flow.addOnCompleteListener(task ->
-            {
-                HomeActivity.this.startActivity(new Intent("android.intent.action.VIEW", Uri.parse("https://play.google.com/store/apps/details?id=" + getPackageName())));
-            });
-        }
-    }
-
-    public void UpdateApp() {
-        try {
-            Task<AppUpdateInfo> appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
-            appUpdateInfoTask.addOnSuccessListener(appUpdateInfo -> {
-                if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
-                        && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)) {
-                    try {
-                        appUpdateManager.startUpdateFlowForResult(
-                                appUpdateInfo, AppUpdateType.FLEXIBLE, HomeActivity.this, 101);
-                    } catch (IntentSender.SendIntentException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }).addOnFailureListener(e -> {
-                e.printStackTrace();
-
-            });
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        appUpdateManager.registerListener(listener);
-    }
-
-    InstallStateUpdatedListener listener = installState -> {
-        if (installState.installStatus() == InstallStatus.DOWNLOADED) {
-            popUp();
-        }
-
-    };
-
-    private void popUp() {
-        Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "App Update Almost Done", Snackbar.LENGTH_INDEFINITE);
-        snackbar.setAction("Reload", v -> appUpdateManager.completeUpdate());
-        snackbar.setTextColor(Color.parseColor("#FF0000"));
-        snackbar.show();
     }
 
 

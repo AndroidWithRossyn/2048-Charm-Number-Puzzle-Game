@@ -73,14 +73,6 @@ public class AboutActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    public void onBackPressed() {
-
-        super.onBackPressed();
-
-
-    }
-
     private void playClick() {
         final MediaPlayer click = MediaPlayer.create(AboutActivity.this, R.raw.click);
         if(!utils.getBooleanValue(Utils.mute_sounds)){

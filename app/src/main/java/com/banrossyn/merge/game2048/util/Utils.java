@@ -15,7 +15,7 @@ import com.banrossyn.merge.game2048.R;
 import java.util.Objects;
 
 public class Utils {
-    public static final String ONESIGNAL_APP_ID = "f374353e-7988-425f-90e5-c67495940a9d";
+
     public static final String SHAREDPREFERENCEFILENAME = "2048";
 
     private Context context;

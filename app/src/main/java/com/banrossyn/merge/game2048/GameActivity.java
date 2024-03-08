@@ -40,9 +40,7 @@ import com.banrossyn.merge.game2048.Tiles.BitmapCreator;
 import com.banrossyn.merge.game2048.adapter.ScoreAdapter;
 import com.banrossyn.merge.game2048.interfaces.OnHomePressedListener;
 import com.banrossyn.merge.game2048.util.Utils;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
+
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -55,8 +53,7 @@ public class GameActivity extends AppCompatActivity {
     HomeWatcher mHomeWatcher;
     private int boardRows, boardCols, boardExponent, gameMode;
     private boolean isTutorialFromMainScreen;
-    private AdView adViewAdmob;
-    LinearLayout linerAd;
+
     private Utils utils;
 
     @Override
@@ -107,12 +104,7 @@ public class GameActivity extends AppCompatActivity {
                 scoreBoardDialog();
             }
         });
-        linerAd = findViewById(R.id.linerAd);
 
-//        uncomment for show banner ad
-    /*    if (!isTutorialFromMainScreen) {
-            loadBannerAdmob();
-        }*/
     }
 
     public static Context getContext() {
@@ -517,9 +509,7 @@ public class GameActivity extends AppCompatActivity {
     protected void onResume() {
 //        hideSystemUI();
         super.onResume();
-        if (adViewAdmob != null) {
-            adViewAdmob.resume();
-        }
+
 
         if (mServ != null) {
             mServ.resumeMusic();
@@ -530,9 +520,7 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        if (adViewAdmob != null) {
-            adViewAdmob.pause();
-        }
+
         PowerManager pm = (PowerManager)
                 getSystemService(Context.POWER_SERVICE);
         boolean isScreenOn = false;
@@ -550,9 +538,7 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (adViewAdmob != null) {
-            adViewAdmob.destroy();
-        }
+
         doUnbindService();
         Intent music = new Intent();
         music.setClass(this, Music.class);
@@ -560,40 +546,6 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
-    private void loadBannerAdmob() {
-        // Create an ad request.
-        adViewAdmob = new AdView(this);
-        adViewAdmob.setAdUnitId(getString(R.string.BannerAd));
-        linerAd.removeAllViews();
-        linerAd.addView(adViewAdmob);
-
-        AdSize adSize = getAdSize();
-        adViewAdmob.setAdSize(adSize);
-
-        AdRequest adRequest = new AdRequest.Builder().build();
-
-        // Start loading the ad in the background.
-        adViewAdmob.loadAd(adRequest);
-    }
-
-    private AdSize getAdSize() {
-        // Determine the screen width (less decorations) to use for the ad width.
-        Display display = getWindowManager().getDefaultDisplay();
-        DisplayMetrics outMetrics = new DisplayMetrics();
-        display.getMetrics(outMetrics);
-
-        float density = outMetrics.density;
-
-        float adWidthPixels = linerAd.getWidth();
-
-        // If the ad hasn't been laid out, default to the full screen width.
-        if (adWidthPixels == 0) {
-            adWidthPixels = outMetrics.widthPixels;
-        }
-
-        int adWidth = (int) (adWidthPixels / density);
-        return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(this, adWidth);
-    }
 
 }
 
