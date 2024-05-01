@@ -30,7 +30,7 @@ Choose Different Exponents 2,3,4 and 5.
 
 
 <p align="center">
-     <a href="https://play.google.com/store/apps/details?id=com.banrossyn.merge.game2048">
+     <a href="https://play.google.com/store/apps/details?id=utsavsoft.merge.game2048">
       <img src="https://user-images.githubusercontent.com/97843190/160886335-271766da-f77d-4bc6-8216-b592afa5e574.jpg"  />
     </a>
   </p>

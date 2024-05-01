@@ -1,0 +1,30 @@
+Title-
+2048: Marge Tiles
+
+short dis-
+Marge Tiles Puzzle 2048 Game. Very simple game yet insanely addictive!
+
+
+Full Dis-
+
+2048 Marge Tiles is the classic 2048 puzzle game. Slide the tiles and merge them to reach 2048 tile.
+Start with 2 and reach 16, 32, 128, 512, 1024 and finally 2048.
+
+The good old classic 2048 with new features.
+Random Blocks will spawn in your Board.
+Your Board Knows how to Shuffle. Choose Different Exponents 2,3,4 and 5.
+
+Features
+✪ block tiles in Game
+✪ A best graphic puzzle game.
+✪ Different tiles options to marge.
+✪ completely native implementation.
+✪ keep playing any part of the screen.
+✪ beautiful, simple and classic design.
+✪ click and swipe sound with Background music.
+✪ High score and leaderboard for all board sizes.
+
+
+Board Size:
+  3X3, 4X4, 5X5, 6X6 , 4X3, 5X3, 5X4, 6X5.
+

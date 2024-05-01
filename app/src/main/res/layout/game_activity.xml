@@ -138,7 +138,7 @@
                     android:backgroundTintMode="multiply"
                     android:gravity="center">
 
-                    <com.banrossyn.merge.game2048.GameCode.GameViewCell
+                    <com.utsavsoft.mergetiles.game2048.maingamecode.GameViewCell
                         android:id="@+id/game_view_cell"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"

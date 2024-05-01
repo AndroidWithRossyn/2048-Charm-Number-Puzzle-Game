@@ -1,21 +1,16 @@
 <resources>
     <string name="app_name">2048</string>
 
-    <string name="developer">Rossyn \n©2022</string>
+    <string name="Googleplay_games_App_ID">177059721575</string>
+    <string name="package_name" translatable="false">com.utsavsoft.mergetiles.game2048</string>
 
-    <string name="Googleplay_games_App_ID">523708364078</string>
-    <string name="leaderboard_id">CgkI7s33mJkPEAIQAg</string>
-    <string name="my_achievement_id">CgkI7s33mJkPEAIQAQ</string>
-    <!--AdMob Main Ads-->
-        <string name="App_ID">ca-app-pub-4577382853353362~7804334878</string>
-        <string name="BannerAd">ca-app-pub-4577382853353362/3284442404</string>
+    <string name="leaderboard_id"></string>
+    <string name="my_achievement_id"></string>
 
-    <!--AdMob test Ads-->
-<!--    <string name="App_ID" translatable="false">ca-app-pub-3940256099942544~3347511713</string>-->
-<!--    <string name="BannerAd" translatable="false">ca-app-pub-3940256099942544/6300978111</string>-->
+    <string name="App_ID">ca-app-pub-3940256099942544~3347511713</string>
 
-
-    <string name="moregamesurl">https://play.google.com/store/apps/dev?id=5306067645342206751</string>
+    <string name="moregamesurl">https://play.google.com/store/apps/dev?id=6843896041111059302</string>
+    <string name="privacy_policy">https://2048margetiles.blogspot.com/2024/05/privacy-policy.html</string>
 
     <string name="game_over_title">Game Over</string>
     <string name="mode_classic">Classic</string>
@@ -83,6 +78,8 @@
         appears on the board. Players can go beyond this and reach higher scores. When the player has no legal moves
         (there are no spaces and no adjacent tiles with the same value), the game ends.
        </string>
+
+
     <string name="about">About</string>
     <string name="games">SIGN IN</string>
     <string name="more_games">more games</string>

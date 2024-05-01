@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "177059721575",
+    "project_id": "merge-tiles-f0fd2",
+    "storage_bucket": "merge-tiles-f0fd2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:177059721575:android:c383ede2ec42771156ffc2",
+        "android_client_info": {
+          "package_name": "com.utsavsoft.mergetiles.game2048"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAX7yZtDGVLRt38tnoEnmKOxfzbGwPX0tQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
