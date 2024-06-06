@@ -23,6 +23,7 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -148,6 +149,49 @@ public class BoardOptionsActivity extends AppCompatActivity {
                 intent.putExtra("exponent", exponent);
                 intent.putExtra("game_mode", modesIndex);
                 startActivity(intent);
+            }
+        });
+
+
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                playClick();
+                if (thirdViewIsVisible) {
+                    rightAnimOut.setAnimationListener(new Animation.AnimationListener() {
+                        public void onAnimationStart(Animation animation) {
+                        }
+
+                        public void onAnimationRepeat(Animation animation) {
+                        }
+
+                        public void onAnimationEnd(Animation animation) {
+                            layoutThird.setVisibility(View.GONE);
+                            layoutSecond.setVisibility(View.VISIBLE);
+                            layoutSecond.startAnimation(leftAnimIn);
+                            thirdViewIsVisible = false;
+                        }
+                    });
+                    layoutThird.startAnimation(rightAnimOut);
+                } else if (secondViewIsVisible) {
+                    rightAnimOut.setAnimationListener(new Animation.AnimationListener() {
+                        public void onAnimationStart(Animation animation) {
+                        }
+
+                        public void onAnimationRepeat(Animation animation) {
+                        }
+
+                        public void onAnimationEnd(Animation animation) {
+                            layoutSecond.setVisibility(View.GONE);
+                            layoutFirst.setVisibility(View.VISIBLE);
+                            layoutFirst.startAnimation(leftAnimIn);
+                            secondViewIsVisible = false;
+                        }
+                    });
+                    layoutSecond.startAnimation(rightAnimOut);
+                } else {
+                    finish();
+                }
             }
         });
 
@@ -472,46 +516,6 @@ public class BoardOptionsActivity extends AppCompatActivity {
         });
         mHomeWatcher.startWatch();
 
-    }
-
-    @Override
-    public void onBackPressed() {
-        playClick();
-        if (thirdViewIsVisible) {
-            rightAnimOut.setAnimationListener(new Animation.AnimationListener() {
-                public void onAnimationStart(Animation animation) {
-                }
-
-                public void onAnimationRepeat(Animation animation) {
-                }
-
-                public void onAnimationEnd(Animation animation) {
-                    layoutThird.setVisibility(View.GONE);
-                    layoutSecond.setVisibility(View.VISIBLE);
-                    layoutSecond.startAnimation(leftAnimIn);
-                    thirdViewIsVisible = false;
-                }
-            });
-            layoutThird.startAnimation(rightAnimOut);
-        } else if (secondViewIsVisible) {
-            rightAnimOut.setAnimationListener(new Animation.AnimationListener() {
-                public void onAnimationStart(Animation animation) {
-                }
-
-                public void onAnimationRepeat(Animation animation) {
-                }
-
-                public void onAnimationEnd(Animation animation) {
-                    layoutSecond.setVisibility(View.GONE);
-                    layoutFirst.setVisibility(View.VISIBLE);
-                    layoutFirst.startAnimation(leftAnimIn);
-                    secondViewIsVisible = false;
-                }
-            });
-            layoutSecond.startAnimation(rightAnimOut);
-        } else {
-            super.onBackPressed();
-        }
     }
 
     @Override

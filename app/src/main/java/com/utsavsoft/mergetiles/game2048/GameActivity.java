@@ -26,6 +26,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.utsavsoft.mergetiles.game2048.maingamecode.ScoreModel;
@@ -93,6 +94,15 @@ public class GameActivity extends AppCompatActivity {
             scoreBoardDialog();
         });
 
+
+
+
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                destroyGameThread();
+            }
+        });
     }
 
     public static Context getContext() {
@@ -469,11 +479,6 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
-        destroyGameThread();
-        super.onBackPressed();
-    }
 
     @Override
     protected void onResume() {

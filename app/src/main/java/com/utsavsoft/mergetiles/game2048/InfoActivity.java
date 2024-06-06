@@ -18,6 +18,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -38,7 +39,7 @@ public class InfoActivity extends AppCompatActivity {
         setContentView(R.layout.info_activity);
         utils = new Utils(InfoActivity.this);
 
-        if(!utils.getBooleanValue(Utils.mute_music)){
+        if (!utils.getBooleanValue(Utils.mute_music)) {
             playMusic();
         }
 
@@ -51,7 +52,7 @@ public class InfoActivity extends AppCompatActivity {
 
 
         btnClose.setOnClickListener(v -> {
-            onBackPressed();
+            finish();
             playClick();
         });
 
@@ -66,12 +67,19 @@ public class InfoActivity extends AppCompatActivity {
         }
 
 
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                finish();
+            }
+        });
+
     }
 
 
     private void playClick() {
         final MediaPlayer click = MediaPlayer.create(InfoActivity.this, R.raw.click);
-        if(!utils.getBooleanValue(Utils.mute_sounds)){
+        if (!utils.getBooleanValue(Utils.mute_sounds)) {
             click.start();
         }
     }
