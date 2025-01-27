@@ -15,7 +15,7 @@
 
  <p align="center">
     <a >
-      <img src="https://user-images.githubusercontent.com/97843190/186829545-82a25155-6331-481b-93e1-b77e7badba58.png"  />
+      <img src="./screenshot/2048.png" width="1000" />
     </a>
   </p>
 
@@ -31,7 +31,7 @@ Choose Different Exponents 2,3,4 and 5.
 
 <p align="center">
      <a href="">
-      <img src="https://user-images.githubusercontent.com/97843190/160886335-271766da-f77d-4bc6-8216-b592afa5e574.jpg"  />
+      <img src="https://user-images.githubusercontent.com/97843190/160886335-271766da-f77d-4bc6-8216-b592afa5e574.jpg" width="1000" />
     </a>
   </p>
 
@@ -72,22 +72,22 @@ sart at zero, and increases by the value of the new tile each time two tiles mee
 
  <p align="center">
     <a>
-      <img src="https://play-lh.googleusercontent.com/QpZt_VL7TWy5sQRJSk3-VMpPIaehjPHdKuk8WX52hVZ-i4EKmSls6UB8-igyraeeuA=w2560-h1440"/>
+      <img src="https://play-lh.googleusercontent.com/QpZt_VL7TWy5sQRJSk3-VMpPIaehjPHdKuk8WX52hVZ-i4EKmSls6UB8-igyraeeuA=w2560-h1440" width="1000"/>
     </a>
    <a>
-      <img src="https://play-lh.googleusercontent.com/4kfuxK3MPwIiVS0suzytnaAp-dTMfPVi_eu60cFKsTeaY78RI19EZeYa-ZjYT2Wteis=w2560-h1440" />
+      <img src="https://play-lh.googleusercontent.com/4kfuxK3MPwIiVS0suzytnaAp-dTMfPVi_eu60cFKsTeaY78RI19EZeYa-ZjYT2Wteis=w2560-h1440" width="1000"/>
     </a>
      <a>
-      <img src="https://play-lh.googleusercontent.com/TEa3VbrVFo14n3kiXQzCp_QLRrmU8uDBL1fPhhpst-uTup16sJRuRZgW3bAJweqbDw=w2560-h1440" />
+      <img src="https://play-lh.googleusercontent.com/TEa3VbrVFo14n3kiXQzCp_QLRrmU8uDBL1fPhhpst-uTup16sJRuRZgW3bAJweqbDw=w2560-h1440" width="1000" />
     </a>
      <a>
-      <img src="https://play-lh.googleusercontent.com/tTj45ZCGWGYKsuEeVtCQlOA2D328khIbpNMLMRcymelrZF5OfElZ0K_-UcUDa0sAtA=w2560-h1440" />
+      <img src="https://play-lh.googleusercontent.com/tTj45ZCGWGYKsuEeVtCQlOA2D328khIbpNMLMRcymelrZF5OfElZ0K_-UcUDa0sAtA=w2560-h1440" width="1000" />
     </a>
      <a>
-      <img src="https://play-lh.googleusercontent.com/J_XmJegQiHxnEkxVu5Kd2C3-RKVj7fOCxO8tN4hKt82C_n76JRYGFMEOmOHXa5GNDQPO=w2560-h1440" />
+      <img src="https://play-lh.googleusercontent.com/J_XmJegQiHxnEkxVu5Kd2C3-RKVj7fOCxO8tN4hKt82C_n76JRYGFMEOmOHXa5GNDQPO=w2560-h1440" width="1000" />
     </a>
     <a>
-      <img src="https://play-lh.googleusercontent.com/ezP0MIsnZGAzm87vSfdbWttRCqX2sndfwzWOVlbYbE1zHrH_3QDBQWpo0X8p2cTFGD4_=w2560-h1440" />
+      <img src="https://play-lh.googleusercontent.com/ezP0MIsnZGAzm87vSfdbWttRCqX2sndfwzWOVlbYbE1zHrH_3QDBQWpo0X8p2cTFGD4_=w2560-h1440" width="1000" />
     </a>
 
   </p>
