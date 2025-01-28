@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--    custom activity animation-->
+    <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_right_side</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_out_left_side</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_in_left_side</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_right_side</item>
+    </style>
+
+    <!--    animation for popup center dialog-->
+    <style name="DialogAnimationPopUp">
+        <item name="android:windowEnterAnimation">@anim/popup_show</item>
+        <item name="android:windowExitAnimation">@anim/popup_hide</item>
+    </style>
+
+
+    <style name="ShapeAppearance.App.corners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10%</item>
+    </style>
+    <style name="ShapeAppearance.App.corners20" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20%</item>
+    </style>
+    <style name="ShapeAppearance.App.corners50" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+</resources>

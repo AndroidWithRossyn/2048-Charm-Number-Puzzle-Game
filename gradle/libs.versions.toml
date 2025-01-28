@@ -1,6 +1,8 @@
 [versions]
 agp = "8.8.0"
-kotlin = "1.9.24"
+easytoast = "1.0.6"
+kotlin = "2.1.0"
+kotlinKsp = "2.1.0-1.0.29"
 coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -10,8 +12,21 @@ material = "1.12.0"
 activity = "1.10.0"
 constraintlayout = "2.2.0"
 
+multidex = "2.0.1"
+androidDocumentationPlugin = "2.0.0"
+hiltAndroid = "2.55"
+serialization = "2.1.0"
+leakcanaryAndroid = "2.14"
+sdpAndroid = "1.1.1"
+lifecycleProcess = "2.8.7"
+securityCrypto = "1.1.0-alpha06"
+timber = "5.0.1"
+toolargetool = "0.3.0"
+animations = "4.1.1"
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+easytoast = { module = "com.github.AndroidWithRossyn:easytoast", version.ref = "easytoast" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -20,7 +35,36 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 
+androidx-multidex = { module = "androidx.multidex:multidex", version.ref = "multidex" }
+
+leakcanary-android = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanaryAndroid" }
+android-documentation-plugin = { module = "org.jetbrains.dokka:android-documentation-plugin", version.ref = "androidDocumentationPlugin" }
+
+sdp-android = { module = "com.intuit.sdp:sdp-android", version.ref = "sdpAndroid" }
+ssp-android = { module = "com.intuit.ssp:ssp-android", version.ref = "sdpAndroid" }
+
+androidx-lifecycle-process = { module = "androidx.lifecycle:lifecycle-process", version.ref = "lifecycleProcess" }
+
+androidx-security-crypto = { module = "androidx.security:security-crypto", version.ref = "securityCrypto" }
+
+timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
+view = { module = "com.github.FunkyMuse.KAHelpers:view", version.ref = "animations" }
+animations = { module = "com.github.FunkyMuse.KAHelpers:animations", version.ref = "animations" }
+toolargetool = { module = "com.gu.android:toolargetool", version.ref = "toolargetool" }
+
+dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "hiltAndroid" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltAndroid" }
+
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+googleDevtoolsKsp = { id = "com.google.devtools.ksp", version.ref = "kotlinKsp" }
 
+
+jetbrains-dokka = { id = "org.jetbrains.dokka", version.ref = "androidDocumentationPlugin" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "serialization" }
+
+hiltPlugin = { id = "com.google.dagger.hilt.android", version.ref = "hiltAndroid" }

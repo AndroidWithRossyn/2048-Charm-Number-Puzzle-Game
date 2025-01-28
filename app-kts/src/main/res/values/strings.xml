@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">2048</string>
+    <string name="developed_by">Developed by Rohitraj Khorwal</string>
+    <string name="copyright_rossyn">© 2021–2025 Rossyn\nAll rights reserved</string>
+
+    <string name="new_game">New Game</string>
+    <string name="how_to_play">How to Play</string>
+    <string name="settings">Settings</string>
+    <string name="Score_board">Score Board</string>
+    <string name="about">About</string>
+    <string name="rate">Rate us</string>
+    <string name="more_games">More Games</string>
 </resources>
