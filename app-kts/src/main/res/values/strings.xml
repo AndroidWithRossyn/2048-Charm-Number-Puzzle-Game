@@ -3,11 +3,77 @@
     <string name="developed_by">Developed by Rohitraj Khorwal</string>
     <string name="copyright_rossyn">© 2021–2025 Rossyn\nAll rights reserved</string>
 
-    <string name="new_game">New Game</string>
-    <string name="how_to_play">How to Play</string>
-    <string name="settings">Settings</string>
-    <string name="Score_board">Score Board</string>
     <string name="about">About</string>
     <string name="rate">Rate us</string>
     <string name="more_games">More Games</string>
+
+
+    <string name="game_over_title">Game Over</string>
+    <string name="mode_classic">Classic</string>
+    <string name="mode_blocks">Blocks</string>
+    <string name="mode_shuffle">Shuffle</string>
+    <string name="mode_exp_classic">The good old classic 2048</string>
+    <string name="mode_exp_blocks">Random blocks will spawn in your board</string>
+    <string name="mode_exp_shuffle">"Your board knows how to Shuffle!! "</string>
+    <string name="exponent_exp_2">Try to get the \n2048 Tile!</string>
+    <string name="exponent_exp_3">Try to get the \n177,147 Tile!</string>
+    <string name="exponent_exp_4">Try to get the \n4,194,304 Tile!</string>
+    <string name="exponent_exp_5">Try to get the \n48,828,125 Tile!</string>
+    <string name="start">Start!</string>
+    <string name="end_tutorial">End Tutorial</string>
+    <string name="shuffle">Shuffle!</string>
+    <string name="new_game">New Game</string>
+    <string name="Score_board">Score Board</string>
+    <string name="choose_game_mode">Choose Game Mode</string>
+    <string name="choose_board_size">Choose Board Size</string>
+    <string name="square">Square</string>
+    <string name="rectangle">Rectangle</string>
+    <string name="choose_exponent">Choose Exponent</string>
+    <string name="on">On</string>
+    <string name="off">Off</string>
+    <string name="play">Play !</string>
+    <string name="next">Next</string>
+    <string name="settings">Settings</string>
+    <string name="music">Music</string>
+    <string name="sound">Sound</string>
+    <string name="close">Close</string>
+    <string name="your_score">your score</string>
+    <string name="play_again">Play Again</string>
+    <string name="how_to_play">How to Play</string>
+    <string name="best_score">Best :</string>
+    <string name="winner">Winner!!!</string>
+    <string name="new_score">New Score!!!</string>
+    <string name="tutorial_first_line">How to play:\nSwipe Up , Down , left , right to Move the Tiles Across the Board</string>
+    <string name="tutorial_second_line">GOOD!! \nTwo Identical Tiles will Merge when they Collide, Try to Merge the Tiles</string>
+    <string name="tutorial_third_line">Perfect!!\nContinue to Merge the Tiles and Try to get a Higher Score!</string>
+
+
+    <string name="textfrist">Join the numbers and reach the 2048 tile! Supports small (3x3),(3x4),(3x5),\n
+        classic (4x4),(4x5) large (5x5),(5x6), and Huge (6x6),board sizes. Be ready for a new challenge!</string>
+    <string name="textsecond">Super 2048 Plus puzzle Keep playing for high score after\n
+        collected 2048 tile Game is automatically saved and continue to play later.\n
+        Beautiful, simple and classic design.</string>
+    <string name="textthird">Block Tiles in Game. click and swipe sound with Background music</string>
+    <string name="textforth">High score and leaderboard for different board sizes.\n
+        Completely native implementation. Play on any part of the screen.\n
+        Classic game play with silky-smooth movements Swipe to move Undo button to reverse a swipe Detailed statistics\n
+        including best scores Always free with no purchase required Official version of the original puzzle game</string>
+    <string name="textfive">HOW TO PLAY: Swipe (up, down, left or right) to move the tiles.\n
+        When two tiles with the same number touch, they merge into one. When a 2048 tile is created,\n
+        the player wins! 8 .. 16 .. 128 .. 1024 .. 2048.
+       </string>
+    <string name="textsix">2048 is played on a plain 4×4 grid,\n
+        consisting of numbered tiles that slide when a player moves them using the four arrow keys. On each turn,\n
+        a new tile randomly appears on an empty spot on the board with a value of 2 or 4.\n
+        The tiles slide as far as possible in the chosen direction until they are stopped by another tile or the edge of the grid.\n
+        If two tiles of the same number collide while moving, they will merge into one tile with the total value of the two tiles colliding.\n
+        The resulting tile cannot merge with any other tile in the same move again. High scoring tiles emit a soft glow;\n
+        The highest possible tile is 131,072. If a move causes three consecutive tiles of the same value to move simultaneously,\n
+        only the two tiles that are farthest in the direction of motion will combine.\n
+        If all four spaces in a row or column are filled with tiles of the same value, a move parallel to that row/column will add the first two and\n
+        the last two. A scoreboard in the top right keeps track of the user\'s score. The user\'s score starts at zero,\n
+        and increases by the value of the new tile each time two tiles meet. The game is won when a tile with the value 2048\n
+        appears on the board. Players can go beyond this and reach higher scores. When the player has no legal moves\n
+        (there are no spaces and no adjacent tiles with the same value), the game ends.\n
+       </string>
 </resources>

@@ -1,11 +1,9 @@
 package com.rossyn.blocktiles.game2048.presentation.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsControllerCompat
 import com.rossyn.blocktiles.game2048.databinding.HomeActivityBinding
 import com.rossyn.blocktiles.game2048.presentation.utils.enableEdgeToEdgeAppTrans
 import com.rossyn.blocktiles.game2048.presentation.utils.scaleAnim
@@ -29,10 +27,6 @@ class HomeActivity : BaseActivity(), View.OnClickListener {
             v.setPadding(0, 0, 0, 0)
             insets
         }
-        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
-        windowInsetsController.systemBarsBehavior =
-            WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-        windowInsetsController.hide(WindowInsetsCompat.Type.systemBars())
 
 
         listOf(
@@ -52,8 +46,36 @@ class HomeActivity : BaseActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
+        playClick()
         when (v) {
             binding.btnNewGame -> {
+                val intent = Intent(this, BoardOptionsActivity::class.java)
+                startActivity(intent)
+            }
+
+            binding.btnLoadGame -> {
+                val intent = Intent(this, GameActivity::class.java)
+                startActivity(intent)
+            }
+
+            binding.btnSettings -> {
+
+            }
+
+            binding.btnScoreBoard -> {
+
+            }
+
+            binding.btnAbout -> {
+                val intent = Intent(this, InfoActivity::class.java)
+                startActivity(intent)
+            }
+
+            binding.btnRate -> {
+
+            }
+
+            binding.btnMoreGames -> {
 
             }
         }

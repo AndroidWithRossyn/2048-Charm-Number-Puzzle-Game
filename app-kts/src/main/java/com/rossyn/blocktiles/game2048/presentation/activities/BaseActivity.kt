@@ -1,17 +1,25 @@
 package com.rossyn.blocktiles.game2048.presentation.activities
 
+import android.app.ActivityManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
+import android.media.SoundPool
 import android.os.Bundle
 import android.os.IBinder
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.DefaultLifecycleObserver
+import com.rossyn.blocktiles.game2048.R
+import com.rossyn.blocktiles.game2048.data.prefs.SharedPref
 import com.rossyn.blocktiles.game2048.services.MusicService
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
+import javax.inject.Inject
 
 @AndroidEntryPoint
 abstract class BaseActivity : AppCompatActivity(), DefaultLifecycleObserver {
@@ -19,6 +27,9 @@ abstract class BaseActivity : AppCompatActivity(), DefaultLifecycleObserver {
     private var mIsBound = false
 
     private var mServ: MusicService? = null
+
+    @Inject
+    lateinit var sharedPref: SharedPref
 
     private val serviceConnection = object : ServiceConnection {
         override fun onServiceConnected(name: ComponentName?, binder: IBinder?) {
@@ -36,8 +47,20 @@ abstract class BaseActivity : AppCompatActivity(), DefaultLifecycleObserver {
         super<AppCompatActivity>.onCreate(savedInstanceState)
         lifecycle.addObserver(this)
 
+        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
+        windowInsetsController.systemBarsBehavior =
+            WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        windowInsetsController.hide(WindowInsetsCompat.Type.systemBars())
+
 
         Timber.tag("BaseMonitor").d("onCreate: ")
+
+        soundPool = SoundPool.Builder()
+            .setMaxStreams(5)
+            .build()
+        clickSoundId = soundPool.load(this, R.raw.click, 1)
+
+        bindMusicService()
     }
 
     /**
@@ -60,7 +83,7 @@ abstract class BaseActivity : AppCompatActivity(), DefaultLifecycleObserver {
                 }
             }
         })
-        bindMusicService()
+
     }
 
     /**
@@ -70,9 +93,23 @@ abstract class BaseActivity : AppCompatActivity(), DefaultLifecycleObserver {
 
 
     private fun bindMusicService() {
-        Intent(this, MusicService::class.java).also {
-            startService(it)
-            bindService(it, serviceConnection, Context.BIND_AUTO_CREATE)
+        if (isAppInForeground()) {
+            Intent(this, MusicService::class.java).also {
+                startService(it)
+                bindService(it, serviceConnection, Context.BIND_AUTO_CREATE)
+            }
+        } else {
+            Timber.tag("ServiceError")
+                .e("Cannot start service as the app is not in the foreground.")
+        }
+    }
+
+    private lateinit var soundPool: SoundPool
+    private var clickSoundId: Int = 0
+
+    fun playClick() {
+        if (!sharedPref.isMuteMusic) {
+            soundPool.play(clickSoundId, 1f, 1f, 0, 0, 1f)
         }
     }
 
@@ -107,6 +144,7 @@ abstract class BaseActivity : AppCompatActivity(), DefaultLifecycleObserver {
     override fun onDestroy() {
         lifecycle.removeObserver(this)
         unbindMusicService()
+        soundPool.release()
         Timber.tag("BaseMonitor").d("onDestroy")
         super<AppCompatActivity>.onDestroy()
     }
@@ -117,11 +155,27 @@ abstract class BaseActivity : AppCompatActivity(), DefaultLifecycleObserver {
     }
 
 
-
     private fun unbindMusicService() {
         if (mIsBound) {
             unbindService(serviceConnection)
             mIsBound = false
         }
     }
+
+
+    private fun isAppInForeground(): Boolean {
+        val activityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        val appProcesses = activityManager.runningAppProcesses ?: return false
+
+        val packageName = packageName
+        for (appProcess in appProcesses) {
+            if (appProcess.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND
+                && appProcess.processName == packageName
+            ) {
+                return true
+            }
+        }
+        return false
+    }
+
 }

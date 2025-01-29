@@ -3,9 +3,6 @@ package com.rossyn.blocktiles.game2048.presentation.activities
 import android.content.Intent
 import android.os.Bundle
 import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.lifecycleScope
 import com.rossyn.blocktiles.game2048.databinding.EntryActivityBinding
 import com.rossyn.blocktiles.game2048.domain.results.DataLoadingState
@@ -17,7 +14,6 @@ import com.rossyn.blocktiles.game2048.utils.takeABreath
 import com.rossyn.easytoast.kts.ToastUtils.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import dev.funkymuse.animations.attentionFlash
-import dev.funkymuse.animations.attentionShake
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
@@ -44,9 +40,6 @@ class EntryActivity : BaseActivity() {
             v.setPadding(0, 0, 0, 0)
             insets
         }
-        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
-        windowInsetsController.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-        windowInsetsController.hide(WindowInsetsCompat.Type.systemBars())
 
         lifecycleScope.launch {
             loadingState.collect { state ->

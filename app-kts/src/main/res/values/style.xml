@@ -29,4 +29,20 @@
         <item name="cornerSize">50%</item>
     </style>
 
+    <style name="radioSwitchBtnOff">
+        <item name="android:background">@drawable/radio_shape_btn_off</item>
+    </style>
+
+    <style name="radioSwitchBtnOn">
+        <item name="android:background">@drawable/radio_shape_btn_on</item>
+    </style>
+
+    <style name="radioSwitchBtnSquare">
+        <item name="android:background">@drawable/radio_shape_btn_square</item>
+    </style>
+
+    <style name="radioSwitchBtnRectangle">
+        <item name="android:background">@drawable/radio_shape_btn_rectangle</item>
+    </style>
+
 </resources>

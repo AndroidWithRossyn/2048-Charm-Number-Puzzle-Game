@@ -140,4 +140,32 @@
     <color name="md_theme_surfaceContainer_highContrast">#E8E2D4</color>
     <color name="md_theme_surfaceContainerHigh_highContrast">#DAD4C6</color>
     <color name="md_theme_surfaceContainerHighest_highContrast">#CCC6B9</color>
+
+
+    <!--    -->
+    <color name="value2">#FDD96A</color>
+    <color name="value4">#FDAE6F</color>
+    <color name="value8">#FF8A80</color>
+    <color name="value16">#f77c5a</color>
+    <color name="value32">#B5E6A9</color>
+    <color name="value64">#96E8D5</color>
+    <color name="value128">#80D8FF</color>
+    <color name="value256">#8C9EFF</color>
+    <color name="value512">#ffb7ba</color>
+    <color name="value1024">#EC989C</color>
+    <color name="value2048">#E199DB</color>
+    <color name="value4096">#B39DDB</color>
+    <color name="value8192">#9FA8DA</color>
+    <color name="value16384">#90CAF9</color>
+    <color name="value32768">#81D4FA</color>
+    <color name="value65536">#80DEEA</color>
+    <color name="value131072">#80CBC4</color>
+    <color name="value262144">#A5D6A7</color>
+    <color name="value524288">#C5E1A5</color>
+    <color name="valueOther">#707776</color>
+    <color name="valueMax">#E6EE9C</color>
+
+
+    <color name="valueEmpty">#F3EFE9</color>
+    <color name="splaceback">#EFE5E5</color>
 </resources>

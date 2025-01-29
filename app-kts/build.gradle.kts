@@ -113,4 +113,6 @@ dependencies {
 
 
     implementation (libs.androidx.lifecycle.process)
+
+    implementation(libs.androidx.security.crypto)
 }

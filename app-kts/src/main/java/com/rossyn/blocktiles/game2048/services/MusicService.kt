@@ -7,6 +7,7 @@ import android.media.MediaPlayer
 import android.os.Binder
 import android.os.IBinder
 import com.rossyn.blocktiles.game2048.R
+import timber.log.Timber
 import javax.inject.Singleton
 
 @Singleton
@@ -27,6 +28,7 @@ class MusicService : Service(), MediaPlayer.OnErrorListener {
     override fun onCreate() {
         super.onCreate()
         startMusic()
+        Timber.tag("MusicService").d("onCreate")
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -63,6 +65,8 @@ class MusicService : Service(), MediaPlayer.OnErrorListener {
             release()
         }
         mediaPlayer = null
+
+        Timber.tag("MusicService").d("stopMusic")
     }
 
     override fun onDestroy() {
@@ -77,6 +81,7 @@ class MusicService : Service(), MediaPlayer.OnErrorListener {
 
     override fun onError(mp: MediaPlayer?, what: Int, extra: Int): Boolean {
         stopMusic()
-        return true
+        Timber.tag("MusicService").d("onError")
+        return false
     }
 }

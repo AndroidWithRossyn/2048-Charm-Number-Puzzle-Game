@@ -1,6 +1,11 @@
 package com.rossyn.blocktiles.game2048.utils
 
+import android.content.Context
+import androidx.appcompat.content.res.AppCompatResources
 import kotlinx.coroutines.delay
+
+fun Context.getDrawableCompat(resId: Int) = AppCompatResources.getDrawable(this, resId)
+
 
 const val FLASH_TIME = 50L
 const val BLINK_TIME = 100L
