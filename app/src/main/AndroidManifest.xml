@@ -57,21 +57,6 @@
             android:resource="@array/preloaded_fonts" />
 
 
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="@string/App_ID" />
-        <property
-            android:name="android.adservices.AD_SERVICES_CONFIG"
-            android:resource="@xml/gma_ad_services_config"
-            tools:replace="android:resource" />
-
-        <meta-data
-            android:name="com.google.android.gms.games.APP_ID"
-            android:value="@string/Googleplay_games_App_ID" />
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
-
     </application>
 
 </manifest>

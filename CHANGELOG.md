@@ -1,3 +1,8 @@
+## 31 JAN 2025
+
+- app added,
+- game optimized for kotlin use (not yet finished)
+
 ## 29 JAN 2025
 
 - Shared Preferences added for settings and configurations

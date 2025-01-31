@@ -51,6 +51,7 @@ class SharedPref @Inject constructor(
 
     var isMuteMusic by preference(MUTE_MUSIC, false)
     var isMuteSound by preference(MUTE_SOUND, false)
+    var isTutorialPlayed by preference(TUTORIAL_PLAYED, false)
 
     /**
      * Generic preference delegate for all types (nullable and non-nullable).

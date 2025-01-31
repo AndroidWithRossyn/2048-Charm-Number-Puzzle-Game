@@ -138,7 +138,6 @@ public class BoardOptionsActivity extends AppCompatActivity {
 
         Button btnPlay = findViewById(R.id.button_play);
         btnPlay.setAnimation(scaleAnimation);
-        setExponentSelecting();
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -233,6 +232,7 @@ public class BoardOptionsActivity extends AppCompatActivity {
         modeTypes.add(getDrawable(R.drawable.classic_mode));
         modeNames.add(getString(R.string.mode_classic));
         modeExp.add(getString(R.string.mode_exp_classic));
+
         modeTypes.add(getDrawable(R.drawable.block_mode));
         modeNames.add(getString(R.string.mode_blocks));
         modeExp.add(getString(R.string.mode_exp_blocks));

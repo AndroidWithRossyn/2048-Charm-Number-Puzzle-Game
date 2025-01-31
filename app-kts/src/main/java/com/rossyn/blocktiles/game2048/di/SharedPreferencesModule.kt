@@ -1,9 +1,10 @@
-package com.rossyn.blocktiles.game2048.data.prefs
+package com.rossyn.blocktiles.game2048.di
 
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
+import com.rossyn.blocktiles.game2048.data.prefs.SharedPref
 import com.rossyn.blocktiles.game2048.utils.Constants
 import dagger.Module
 import dagger.Provides

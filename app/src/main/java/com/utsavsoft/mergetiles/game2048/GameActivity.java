@@ -29,6 +29,7 @@ import android.widget.TextView;
 import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.utsavsoft.mergetiles.game2048.maingamecode.GameViewCell;
 import com.utsavsoft.mergetiles.game2048.maingamecode.ScoreModel;
 import com.utsavsoft.mergetiles.game2048.maingamecode.ScoreBoardBuilder;
 import com.utsavsoft.mergetiles.game2048.maingamecode.ThreadMain;
@@ -53,6 +54,8 @@ public class GameActivity extends AppCompatActivity {
     private boolean isTutorialFromMainScreen;
 
     private Utils utils;
+
+    GameViewCell gameViewCell;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +83,9 @@ public class GameActivity extends AppCompatActivity {
             startActivity(new Intent(GameActivity.this, HomeActivity.class));
             finish();
         });
+
+        gameViewCell = findViewById(R.id.game_view_cell);
+        gameViewCell.initSwipeListener(findViewById(R.id.relativeLayout));
 
         ImageButton btnSetting = findViewById(R.id.btn_settings);
         btnSetting.setOnClickListener(v -> {

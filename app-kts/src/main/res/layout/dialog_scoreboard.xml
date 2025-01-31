@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/score_board_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/score_board"
+    android:padding="@dimen/_25sdp">
+
+    <TextView
+        android:id="@+id/tv_score_bord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/Score_board"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:id="@+id/mode_layout_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_score_bord"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/left_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/arrow_left" />
+
+        <TextView
+            android:id="@+id/textview_mode_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/mode_classic"
+            android:textSize="20sp" />
+
+        <ImageButton
+            android:id="@+id/right_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/arrow_right" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listview_score_board"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/close_button"
+        android:layout_below="@id/mode_layout_buttons"
+        android:layout_gravity="center"
+        android:background="@drawable/shape_rectangle_white"
+        android:fadingEdgeLength="@dimen/_1sdp"
+        android:padding="@dimen/_17sdp"
+        android:scrollbarSize="0dp"
+        android:scrollbarThumbVertical="?colorPrimary"
+        android:verticalScrollbarPosition="right" />
+
+    <Button
+        android:id="@+id/close_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="5dp"
+        android:background="@drawable/rectangle_pink"
+        android:paddingHorizontal="@dimen/_35sdp"
+        android:paddingVertical="@dimen/_3sdp"
+        android:text="@string/close"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/mid_btn" />
+</RelativeLayout>
+
+

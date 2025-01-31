@@ -91,7 +91,7 @@ public final class GameViewCell extends SurfaceView implements SurfaceHolder.Cal
 
         gameActivity.updateScore(scores.getScore(), scores.getTopScore());
         initBarButtons();
-        initSwipeListener();
+
         prepareGameOverDialog();
     }
 
@@ -205,8 +205,8 @@ public final class GameViewCell extends SurfaceView implements SurfaceHolder.Cal
         draw.draw(canvas);
     }
 
-    private void initSwipeListener() {
-        setOnTouchListener(new OnSwipeTouchListener(this.getContext()) {
+   public void initSwipeListener(View view) {
+        view.setOnTouchListener(new OnSwipeTouchListener(view.getContext()) {
             public void onSwipeTop() {
                 if (!dialogOpen) {
                     gameBoardView.up();

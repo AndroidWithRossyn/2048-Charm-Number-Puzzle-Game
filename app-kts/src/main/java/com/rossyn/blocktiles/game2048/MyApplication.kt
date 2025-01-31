@@ -19,6 +19,7 @@ package com.rossyn.blocktiles.game2048
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Application
+import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Build
@@ -49,10 +50,17 @@ class MyApplication : MultiDexApplication(), Application.ActivityLifecycleCallba
 
     companion object {
         val isDebug: Boolean by lazy { BuildConfig.DEBUG }
+        private lateinit var instance: MyApplication
+
+        fun getContext(): Context {
+            return instance.applicationContext
+        }
     }
 
     override fun onCreate() {
         super<MultiDexApplication>.onCreate()
+
+        instance = this
 
         this.registerActivityLifecycleCallbacks(this)
 

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:inset="3dp">
+    <layer-list>
+        <item>
+            <shape>
+                <solid android:color="#AA8261" />
+
+                <corners android:radius="@dimen/_3sdp" />
+            </shape>
+
+        </item>
+        <item
+            android:bottom="@dimen/_1sdp"
+            android:drawable="@drawable/block"
+            android:left="@dimen/_1sdp"
+            android:right="@dimen/_1sdp"
+            android:top="@dimen/_1sdp" />
+    </layer-list>
+
+</inset>

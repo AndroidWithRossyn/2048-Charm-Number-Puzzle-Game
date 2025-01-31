@@ -206,6 +206,6 @@ public class Tile {
             isSolidGone = true;
         }
         currentCellHeight = currentCellHeight - sizeSpeed;
-        currentCellWidth = currentCellHeight - sizeSpeed;
+        currentCellWidth = currentCellWidth - sizeSpeed;
     }
 }

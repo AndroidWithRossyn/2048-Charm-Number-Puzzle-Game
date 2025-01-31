@@ -438,7 +438,6 @@ public final class GameBoardView {
                         randY = rand.nextInt(boardCols);
 
                         if (newBoard[randX][randY] == null) {
-
                             newBoard[randX][randY] = new Tile(board[x][y].getValue(), positions[randX][randY], this);
                             moved = true;
                         }
