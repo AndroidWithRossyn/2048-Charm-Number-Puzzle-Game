@@ -17,7 +17,7 @@
     </a>
   </p>
 
-### Game Details:
+## Game Details:
 
 The good old classic 2048 with new features.
 Random Blocks will spawn in your Board.
@@ -34,7 +34,7 @@ Choose Different Exponents 2,3,4 and 5.
   </p>
 
 
-### Features:
+## Features:
     ✪ block tiles in Game
     ✪ A best graphic puzzle game.
     ✪ Different tiles options to marge.
@@ -48,7 +48,7 @@ Choose Different Exponents 2,3,4 and 5.
 
 
 
-### Board Size:
+## Board Size:
 
 Square
 
@@ -59,24 +59,24 @@ Rectangle
 
 
 
-### About
+## About
 When two tiles with the same number touch, they merge into one. When a 2048 tile is created, the player wins! 8 ., 16 ., 128 ., 1024 ., 2048.
 2048 is played on a plain 4×4 grid,consisting of numbered tiles that slide when a player moves them using the four arrow keys. On each turn, a new tile randomly appears on an empty spot on the board with a value of 2 or 4. The tiles slide as far as possible in the chosen direction until they are stopped by another tile or the edge of the grid.If two tiles of the same number collide while moving, they will merge into one tile with the total value of the two tiles colliding.The resulting tile cannot merge with any other tile in the same move again. High scoring tiles emit a soft glow; The highest possible tile is 131,072. If a move causes three consecutive tiles of the same value to move simultaneously, only the two tiles that are farthest in the direction of motion will combine. If all four spaces in a row or column are filled with tiles of the same value, a move parallel to that row/column will add the first two and the last two. A scoreboard in the top right keeps track of the user's score. The user's score
 sart at zero, and increases by the value of the new tile each time two tiles meet. The game is won when a tile with the value 2048 appears on the board. Players can go beyond this and reach higher scores. When the player has no legal moves (there are no spaces and no adjacent tiles with the same value), the game ends.
 
-### Find this Repository useful? ❤️
+# Find this Repository useful? ❤️
 
 Support it by joining stargazers for this repository. ⭐
 
 Also, [follow me on GitHub](https://github.com/AndroidWithRossyn/) for my next creations! 🤩
 
-### :zap: Latest Medium Articles
+## :zap: Latest Medium Articles
 
 <!-- ARTICLES:START -->
 
 <!-- ARTICLES:END -->
 
-### Graphics
+## Graphics
 ---
 
  <p align="center">
@@ -102,7 +102,7 @@ Also, [follow me on GitHub](https://github.com/AndroidWithRossyn/) for my next c
   </p>
 
 
-### License
+## License
 
 ```
 Copyright 2023 Rossyn
