@@ -11,7 +11,6 @@
 
 
     <dimen name="large_btn">@dimen/_25ssp</dimen>
-    <dimen name="mid_btn">@dimen/_20ssp</dimen>
     <dimen name="small_btn">@dimen/_15ssp</dimen>
 
 
@@ -20,4 +19,10 @@
     <dimen name="large_txt">@dimen/_17ssp</dimen>
     <dimen name="mid_txt">@dimen/_15ssp</dimen>
     <dimen name="small_txt">@dimen/_12ssp</dimen>
+
+
+    <dimen name="vertical_space">50dp</dimen>
+    <dimen name="horizontal_space">25dp</dimen>
+
+    <dimen name="mid_btn">25sp</dimen>
 </resources>

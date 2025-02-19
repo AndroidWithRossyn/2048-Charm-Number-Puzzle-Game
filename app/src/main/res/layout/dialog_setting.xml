@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="@dimen/_300sdp"
     android:layout_height="@dimen/_350sdp"
     android:background="@drawable/popup_background"
@@ -12,8 +11,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/settings"
-        android:textSize="@dimen/large_txt"
-        android:textColor="@color/txt_color"/>
+        android:textSize="20sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,11 +26,10 @@
             android:id="@+id/textview_music"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginBottom="5dp"
+            android:gravity="center"
             android:text="@string/music"
-            android:textColor="@color/txt_color"
-            android:textSize="@dimen/mid_txt" />
+            android:textSize="20sp" />
 
         <RadioGroup
             android:id="@+id/radiogroup_music_select"
@@ -54,8 +51,7 @@
                 android:paddingVertical="@dimen/_10sdp"
                 android:text="@string/on"
                 android:textAlignment="center"
-                android:textColor="@color/txt_color"
-                android:textSize="@dimen/small_txt" />
+                android:textSize="12sp" />
 
             <RadioButton
                 android:id="@+id/music_off"
@@ -69,19 +65,17 @@
                 android:paddingVertical="@dimen/_10sdp"
                 android:text="@string/off"
                 android:textAlignment="center"
-                android:textColor="@color/txt_color"
-                android:textSize="@dimen/small_txt" />
+                android:textSize="12sp" />
         </RadioGroup>
 
         <TextView
             android:id="@+id/textview_sound"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColor="@color/txt_color"
             android:layout_marginBottom="5dp"
+            android:gravity="center"
             android:text="@string/sound"
-            android:textSize="@dimen/mid_txt" />
+            android:textSize="12sp" />
 
         <RadioGroup
             android:id="@+id/radiogroup_sound_select"
@@ -103,8 +97,8 @@
                 android:paddingVertical="@dimen/_10sdp"
                 android:text="@string/on"
                 android:textAlignment="center"
-                android:textColor="@color/txt_color"
-                android:textSize="@dimen/small_txt" />
+
+                android:textSize="12sp" />
 
             <RadioButton
                 android:id="@+id/sound_off"
@@ -118,8 +112,7 @@
                 android:paddingVertical="@dimen/_10sdp"
                 android:text="@string/off"
                 android:textAlignment="center"
-                android:textColor="@color/txt_color"
-                android:textSize="@dimen/small_txt" />
+                android:textSize="12sp" />
         </RadioGroup>
     </LinearLayout>
 

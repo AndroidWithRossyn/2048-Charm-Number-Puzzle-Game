@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/score_board_layout"
     android:layout_width="match_parent"
@@ -12,55 +11,54 @@
         android:id="@+id/tv_score_bord"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/Score_board"
         android:gravity="center"
-        android:textColor="@color/txt_color"
-        android:textSize="@dimen/large_extra_txt"/>
+        android:text="@string/Score_board"
+        android:textSize="20sp" />
 
     <LinearLayout
         android:id="@+id/mode_layout_buttons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_below="@id/tv_score_bord"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/left_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/arrow_left"
-            android:layout_gravity="center_vertical" />
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/arrow_left" />
 
         <TextView
             android:id="@+id/textview_mode_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/mode_classic"
             android:gravity="center"
-            android:textColor="@color/txt_color"
-            android:textSize="@dimen/large_txt" />
+            android:text="@string/mode_classic"
+            android:textSize="20sp" />
 
         <ImageButton
             android:id="@+id/right_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/arrow_right"
-            android:layout_gravity="center_vertical"/>
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/arrow_right" />
     </LinearLayout>
+
     <ListView
         android:id="@+id/listview_score_board"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_below="@id/mode_layout_buttons"
         android:layout_above="@+id/close_button"
+        android:layout_below="@id/mode_layout_buttons"
+        android:layout_gravity="center"
+        android:background="@drawable/shape_rectangle_white"
+        android:fadingEdgeLength="@dimen/_1sdp"
         android:padding="@dimen/_17sdp"
         android:scrollbarSize="0dp"
-        android:background="@drawable/shape_rectangle_white"
-        android:verticalScrollbarPosition="right"
-        android:scrollbarThumbVertical="@color/colorPrimary"
-        android:fadingEdgeLength="@dimen/_1sdp" />
+        android:scrollbarThumbVertical="?colorPrimary"
+        android:verticalScrollbarPosition="right" />
 
     <Button
         android:id="@+id/close_button"

@@ -1,15 +1,10 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.googleDevtoolsKsp)
-    alias(libs.plugins.hiltPlugin)
-    alias(libs.plugins.serialization)
     alias(libs.plugins.jetbrains.dokka)
-    id("kotlin-parcelize")
 }
 
 android {
-    namespace = "com.utsavsoft.mergetiles.game2048"
+    namespace = "com.rossyn.blocktiles.game2048"
     compileSdk = 35
 
     defaultConfig {
@@ -54,9 +49,7 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    kotlinOptions {
-        jvmTarget = "11"
-    }
+
 
     packaging {
         jniLibs.useLegacyPackaging = false
@@ -99,10 +92,7 @@ dependencies {
 
     implementation(libs.toolargetool)
 
-    // dagger-hilt
-    implementation(libs.hilt.android)
-    ksp(libs.dagger.compiler)
-    ksp(libs.hilt.compiler)
+
 
     //timber
     implementation(libs.timber)

@@ -25,4 +25,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "2048"
 include(":app")
-include(":app-kts")

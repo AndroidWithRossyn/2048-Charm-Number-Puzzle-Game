@@ -6,24 +6,25 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:orientation="vertical"
-    tools:context=".BoardOptionsActivity">
+    tools:context=".presentation.activities.BoardOptionsActivity">
 
-    <!-- Frist Screen Layout   -->
+    <!-- First Screen Layout   -->
     <RelativeLayout
         android:id="@+id/select_layout_frist"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginVertical="@dimen/home_margin"
-        android:layout_marginHorizontal="@dimen/about_margin"
+        android:layout_marginHorizontal="@dimen/horizontal_space"
+        android:layout_marginVertical="@dimen/vertical_space"
         android:background="@drawable/shape_rectangle_white"
-        android:padding="@dimen/_7sdp">
+        android:padding="@dimen/_7sdp"
+        android:visibility="visible">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_score_bord"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -31,14 +32,13 @@
                 android:layout_margin="@dimen/_3sdp"
                 android:gravity="center"
                 android:text="@string/choose_game_mode"
-                android:textColor="@color/txt_color"
-                android:textSize="@dimen/large_extra_txt"
+                android:textSize="@dimen/mid_btn"
                 app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <LinearLayout
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/linearLayout3"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -51,7 +51,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_score_bord">
 
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/textview_mode_exp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -59,65 +59,66 @@
                     android:gravity="center"
                     android:minLines="2"
                     android:text="@string/mode_exp_classic"
-                    android:textColor="@color/txt_color"
-                    android:textSize="@dimen/mid_txt" />
+                    android:textSize="15sp" />
 
-                <LinearLayout
+                <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:paddingHorizontal="10dp"
                     android:weightSum="4">
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/imageview_select_mode"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_gravity="center"
                         android:layout_weight="4" />
 
-                    <LinearLayout
+                    <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:layout_marginBottom="10dp"
                         android:orientation="horizontal">
 
-                        <ImageButton
+                        <androidx.appcompat.widget.AppCompatImageButton
                             android:id="@+id/left_btn"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
                             android:layout_gravity="center_vertical"
-                            android:background="@drawable/arrow_left" />
+                            android:background="@drawable/arrow_left_icon" />
 
-                        <TextView
+                        <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/textview_mode_type"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="@string/mode_classic"
-                            android:textColor="@color/txt_color"
-                            android:textSize="@dimen/mid_txt" />
+                            android:textSize="12sp" />
 
-                        <ImageButton
+                        <androidx.appcompat.widget.AppCompatImageButton
                             android:id="@+id/right_btn"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
                             android:layout_gravity="center_vertical"
-                            android:background="@drawable/arrow_right" />
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
+                            android:background="@drawable/arrow_right_icon" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <Button
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/button_next"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@drawable/rectangle_dark_blue"
+                android:clickable="true"
+                android:focusable="true"
                 android:paddingHorizontal="@dimen/_30sdp"
                 android:paddingVertical="@dimen/_3sdp"
                 android:text="@string/next"
-                android:textColor="#FFFFFF"
+                android:textColor="@android:color/white"
                 android:textSize="@dimen/mid_btn"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -131,8 +132,8 @@
         android:id="@+id/select_layout_second"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginVertical="@dimen/home_margin"
-        android:layout_marginHorizontal="@dimen/about_margin"
+        android:layout_marginHorizontal="@dimen/horizontal_space"
+        android:layout_marginVertical="@dimen/vertical_space"
         android:background="@drawable/shape_rectangle_white"
         android:padding="@dimen/_7sdp"
         android:visibility="gone">
@@ -141,21 +142,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_choose_bord_size"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_3sdp"
                 android:gravity="center"
                 android:text="@string/choose_board_size"
-                android:textColor="@color/txt_color"
-                android:textSize="@dimen/large_extra_txt"
+                android:textSize="@dimen/mid_btn"
                 app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <LinearLayout
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/linearLayout4"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -179,7 +179,7 @@
                     android:orientation="horizontal"
                     android:weightSum="2">
 
-                    <RadioButton
+                    <com.google.android.material.radiobutton.MaterialRadioButton
                         android:id="@+id/radio_button_square"
                         style="@style/radioSwitchBtnSquare"
                         android:layout_width="0dp"
@@ -190,10 +190,9 @@
                         android:paddingVertical="@dimen/_12sdp"
                         android:text="@string/square"
                         android:textAlignment="center"
-                        android:textColor="@color/txt_color"
-                        android:textSize="@dimen/small_txt" />
+                        android:textSize="15sp" />
 
-                    <RadioButton
+                    <com.google.android.material.radiobutton.MaterialRadioButton
                         android:id="@+id/radio_button_rectangle"
                         style="@style/radioSwitchBtnRectangle"
                         android:layout_width="0dp"
@@ -205,68 +204,68 @@
                         android:paddingVertical="@dimen/_12sdp"
                         android:text="@string/rectangle"
                         android:textAlignment="center"
-                        android:textColor="@color/txt_color"
-                        android:textSize="@dimen/small_txt" />
+                        android:textSize="15sp" />
                 </RadioGroup>
 
-                <LinearLayout
+                <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:paddingHorizontal="@dimen/_7sdp"
                     android:weightSum="4">
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/choose_game_image"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_gravity="center"
                         android:layout_weight="4" />
 
-                    <LinearLayout
+                    <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/_3sdp"
+                        android:layout_marginBottom="10dp"
                         android:gravity="center">
 
-                        <ImageButton
+                        <androidx.appcompat.widget.AppCompatImageButton
                             android:id="@+id/button_left_board_type"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
                             android:layout_gravity="center_vertical"
-                            android:background="@drawable/arrow_left" />
+                            android:background="@drawable/arrow_left_icon" />
 
-                        <TextView
+                        <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/tv_game_size"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="3_x_3"
-                            android:textColor="@color/txt_color"
-                            android:textSize="@dimen/mid_txt" />
+                            android:textSize="12sp" />
 
-                        <ImageButton
+                        <androidx.appcompat.widget.AppCompatImageButton
                             android:id="@+id/button_right_board_type"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
                             android:layout_gravity="center_vertical"
-                            android:background="@drawable/arrow_right" />
+                            android:background="@drawable/arrow_right_icon" />
 
-                    </LinearLayout>
-                </LinearLayout>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </LinearLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <Button
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/button_next_choose_bord"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@drawable/rectangle_dark_blue"
+                android:clickable="true"
+                android:focusable="true"
                 android:paddingHorizontal="@dimen/_30sdp"
                 android:paddingVertical="@dimen/_3sdp"
                 android:text="@string/next"
-                android:textColor="#FFFFFF"
+                android:textColor="@android:color/white"
                 android:textSize="@dimen/mid_btn"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -280,8 +279,8 @@
         android:id="@+id/select_layout_third"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginVertical="@dimen/home_margin"
-        android:layout_marginHorizontal="@dimen/about_margin"
+        android:layout_marginHorizontal="@dimen/horizontal_space"
+        android:layout_marginVertical="@dimen/vertical_space"
         android:background="@drawable/shape_rectangle_white"
         android:padding="@dimen/_7sdp"
         android:visibility="gone">
@@ -290,7 +289,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_create_board3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -298,14 +297,13 @@
                 android:layout_margin="@dimen/_3sdp"
                 android:gravity="center"
                 android:text="@string/choose_exponent"
-                android:textColor="@color/txt_color"
-                android:textSize="@dimen/large_extra_txt"
+                android:textSize="@dimen/mid_btn"
                 app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <LinearLayout
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/linearLayout5"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -319,10 +317,10 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_create_board3">
 
-                <LinearLayout
+                <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/radio_group_layout"
-                    android:layout_width="@dimen/_200sdp"
-                    android:layout_height="@dimen/_200sdp"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
                     android:orientation="vertical"
                     android:weightSum="2">
 
@@ -337,7 +335,7 @@
                         android:orientation="horizontal"
                         android:weightSum="2">
 
-                        <RadioButton
+                        <com.google.android.material.radiobutton.MaterialRadioButton
                             android:id="@+id/rb_exponent_2"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -349,10 +347,9 @@
                             android:padding="@dimen/_3sdp"
                             android:text="2"
                             android:textAlignment="center"
-                            android:textColor="@color/txt_color"
-                            android:textSize="@dimen/exponent_txt" />
+                            android:textSize="35sp" />
 
-                        <RadioButton
+                        <com.google.android.material.radiobutton.MaterialRadioButton
                             android:id="@+id/rb_exponent_3"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -364,8 +361,7 @@
                             android:padding="@dimen/_3sdp"
                             android:text="3"
                             android:textAlignment="center"
-                            android:textColor="@color/txt_color"
-                            android:textSize="@dimen/exponent_txt" />
+                            android:textSize="35sp" />
                     </RadioGroup>
 
                     <RadioGroup
@@ -378,7 +374,7 @@
                         android:orientation="horizontal"
                         android:weightSum="2">
 
-                        <RadioButton
+                        <com.google.android.material.radiobutton.MaterialRadioButton
                             android:id="@+id/rb_exponent_4"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -390,10 +386,9 @@
                             android:padding="@dimen/_3sdp"
                             android:text="4"
                             android:textAlignment="center"
-                            android:textColor="@color/txt_color"
-                            android:textSize="@dimen/exponent_txt" />
+                            android:textSize="35sp" />
 
-                        <RadioButton
+                        <com.google.android.material.radiobutton.MaterialRadioButton
                             android:id="@+id/rb_exponent_5"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -405,12 +400,11 @@
                             android:padding="@dimen/_3sdp"
                             android:text="5"
                             android:textAlignment="center"
-                            android:textColor="@color/txt_color"
-                            android:textSize="@dimen/exponent_txt" />
+                            android:textSize="35sp" />
                     </RadioGroup>
-                </LinearLayout>
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tv_exponent_exp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -419,20 +413,21 @@
                     android:gravity="center"
                     android:padding="@dimen/_3sdp"
                     android:text="@string/exponent_exp_2"
-                    android:textColor="@color/txt_color"
-                    android:textSize="@dimen/mid_txt" />
-            </LinearLayout>
+                    android:textSize="15sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <Button
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/button_play"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@drawable/rectangle_dark_blue"
+                android:clickable="true"
+                android:focusable="true"
                 android:paddingHorizontal="@dimen/_30sdp"
                 android:paddingVertical="@dimen/_3sdp"
                 android:text="@string/play"
-                android:textColor="#FFFFFF"
+                android:textColor="@android:color/white"
                 android:textSize="@dimen/mid_btn"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

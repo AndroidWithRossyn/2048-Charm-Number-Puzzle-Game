@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/game_background_light"
-    android:backgroundTint="@color/game_back_tint"
+    android:backgroundTint="#EDE7E7FF"
     android:backgroundTintMode="multiply"
-    tools:context=".GameActivity">
+    tools:context=".presentation.activities.GameActivity">
 
 
     <RelativeLayout
@@ -45,7 +45,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:layout_marginTop="@dimen/_2sdp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="18dp"
                     android:orientation="horizontal"
                     android:weightSum="1">
 
@@ -60,11 +61,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_marginStart="16dp"
                             android:gravity="center"
                             android:text="@string/best_score"
                             android:textColor="@color/valueEmpty"
-                            android:textSize="@dimen/large_txt" />
+                            android:textSize="25sp" />
 
                         <TextView
                             android:id="@+id/best_score_textview"
@@ -80,7 +81,7 @@
                             android:paddingHorizontal="@dimen/_20sdp"
                             android:text="1500"
                             android:textColor="@color/valueEmpty"
-                            android:textSize="@dimen/large_txt" />
+                            android:textSize="25sp" />
                     </LinearLayout>
 
 
@@ -89,9 +90,10 @@
                         android:layout_width="@dimen/_40sdp"
                         android:layout_height="@dimen/_40sdp"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginEnd="16dp"
                         android:background="@drawable/rectangle_pink"
-                        android:padding="@dimen/_5sdp"
+                        android:padding="7dp"
+                        android:scaleType="centerCrop"
                         android:src="@drawable/icon_trophy_white"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -105,13 +107,12 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/menu_best_line"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="@dimen/_3sdp"
                     android:maxLines="1"
                     android:padding="@dimen/_1sdp"
                     android:text="@string/start"
                     android:textAlignment="center"
                     android:textColor="@color/valueEmpty"
-                    android:textSize="@dimen/large_extra_txt"
+                    android:textSize="30sp"
                     android:textStyle="italic" />
 
             </RelativeLayout>
@@ -138,7 +139,7 @@
                     android:backgroundTintMode="multiply"
                     android:gravity="center">
 
-                    <com.utsavsoft.mergetiles.game2048.maingamecode.GameViewCell
+                    <com.rossyn.blocktiles.game2048.presentation.components.GameViewCell
                         android:id="@+id/game_view_cell"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -153,10 +154,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_15sdp"
-                android:layout_marginBottom="@dimen/banner_height"
-                android:background="@drawable/menu_bottom_bar"
+                android:layout_marginBottom="@dimen/vertical_space"
+                android:background="@drawable/shape_oval_orange"
                 android:backgroundTint="#ABFDAE6F"
                 android:backgroundTintMode="multiply"
+                android:elevation="10dp"
                 android:orientation="horizontal"
                 android:paddingHorizontal="@dimen/_25sdp"
                 android:paddingVertical="@dimen/_15sdp"
@@ -175,6 +177,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/round_white"
                     android:padding="@dimen/_5sdp"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/home_icon" />
 
                 <ImageButton
@@ -186,6 +189,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/round_white"
                     android:padding="@dimen/_5sdp"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/reset_icon" />
 
                 <ImageButton
@@ -197,6 +201,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/round_white"
                     android:padding="@dimen/_5sdp"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/undo_icon" />
 
                 <ImageButton
@@ -229,7 +234,7 @@
             android:text="@string/shuffle"
             android:textAlignment="center"
             android:textColor="@color/value2"
-            android:textSize="@dimen/large_extra_txt"
+            android:textSize="30sp"
             android:visibility="gone" />
 
         <TextView
@@ -242,10 +247,10 @@
             android:text="@string/tutorial_third_line"
             android:textAlignment="center"
             android:textColor="@color/value2"
-            android:textSize="@dimen/mid_txt"
+            android:textSize="20sp"
             android:visibility="gone" />
 
-        <Button
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/button_end_tutorial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -259,7 +264,7 @@
             android:paddingVertical="@dimen/_7sdp"
             android:text="@string/end_tutorial"
             android:textColor="#FFFFFF"
-            android:textSize="@dimen/large_btn"
+            android:textSize="@dimen/mid_btn"
             android:visibility="gone" />
 
     </RelativeLayout>

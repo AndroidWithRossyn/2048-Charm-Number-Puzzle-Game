@@ -4,11 +4,9 @@
  </h4>
 
 <div align="center">
-
-<a href="https://t.me/banrossyn" target="_blank"><img src="https://img.shields.io/badge/Telegram-%40banrossyn-28a8ea"></a>
-<a href="https://wa.me/+919694260426/" target="_blank"><img src="https://img.shields.io/badge/whatsapp-%40+919694260426-28a8ea"></a>
-<a href="https://www.linkedin.com/in/rohitrajkhorwal/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-rohitrajkhorwal-informational"></a>
-<a href="mailto:banrossyn@gmail.com"><img src="https://img.shields.io/badge/Email-banrossyn%40gmail.com-blue"></a>
+  
+<a href="mailto:banrossyn@gmail.com"><img src="https://img.shields.io/badge/Gmail-EA4335.svg?logo=Gmail&logoColor=white"></a>
+[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/rohitraj.khorwal) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/rohitrajkhorwal/) [![Medium](https://img.shields.io/badge/Medium-12100E?logo=medium&logoColor=white)](https://medium.com/@rohitrajkhorwal) 
 
 </div>
 
@@ -66,8 +64,19 @@ When two tiles with the same number touch, they merge into one. When a 2048 tile
 2048 is played on a plain 4×4 grid,consisting of numbered tiles that slide when a player moves them using the four arrow keys. On each turn, a new tile randomly appears on an empty spot on the board with a value of 2 or 4. The tiles slide as far as possible in the chosen direction until they are stopped by another tile or the edge of the grid.If two tiles of the same number collide while moving, they will merge into one tile with the total value of the two tiles colliding.The resulting tile cannot merge with any other tile in the same move again. High scoring tiles emit a soft glow; The highest possible tile is 131,072. If a move causes three consecutive tiles of the same value to move simultaneously, only the two tiles that are farthest in the direction of motion will combine. If all four spaces in a row or column are filled with tiles of the same value, a move parallel to that row/column will add the first two and the last two. A scoreboard in the top right keeps track of the user's score. The user's score
 sart at zero, and increases by the value of the new tile each time two tiles meet. The game is won when a tile with the value 2048 appears on the board. Players can go beyond this and reach higher scores. When the player has no legal moves (there are no spaces and no adjacent tiles with the same value), the game ends.
 
+### Find this Repository useful? ❤️
 
+Support it by joining stargazers for this repository. ⭐
 
+Also, [follow me on GitHub](https://github.com/AndroidWithRossyn/) for my next creations! 🤩
+
+### :zap: Latest Medium Articles
+
+<!-- ARTICLES:START -->
+
+<!-- ARTICLES:END -->
+
+### Graphics
 ---
 
  <p align="center">
@@ -92,6 +101,24 @@ sart at zero, and increases by the value of the new tile each time two tiles mee
 
   </p>
 
+
+### License
+
+```
+Copyright 2023 Rossyn
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
 
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=60&section=footer"/>

@@ -1,16 +1,12 @@
 <resources>
     <string name="app_name">2048</string>
+    <string name="developed_by">Developed by Rohitraj Khorwal</string>
+    <string name="copyright_rossyn">© 2021–2025 Rossyn\nAll rights reserved</string>
 
-    <string name="Googleplay_games_App_ID">177059721575</string>
-    <string name="package_name" translatable="false">com.utsavsoft.mergetiles.game2048</string>
+    <string name="about">About</string>
+    <string name="rate">Rate us</string>
+    <string name="more_games">More Games</string>
 
-    <string name="leaderboard_id"></string>
-    <string name="my_achievement_id"></string>
-
-    <string name="App_ID">ca-app-pub-3940256099942544~3347511713</string>
-
-    <string name="moregamesurl">https://play.google.com/store/apps/dev?id=6843896041111059302</string>
-    <string name="privacy_policy">https://2048margetiles.blogspot.com/2024/05/privacy-policy.html</string>
 
     <string name="game_over_title">Game Over</string>
     <string name="mode_classic">Classic</string>
@@ -50,44 +46,34 @@
     <string name="tutorial_first_line">How to play:\nSwipe Up , Down , left , right to Move the Tiles Across the Board</string>
     <string name="tutorial_second_line">GOOD!! \nTwo Identical Tiles will Merge when they Collide, Try to Merge the Tiles</string>
     <string name="tutorial_third_line">Perfect!!\nContinue to Merge the Tiles and Try to get a Higher Score!</string>
-    <string name="textfrist">Join the numbers and reach the 2048 tile! Supports small (3x3),(3x4),(3x5),
+
+
+    <string name="textfrist">Join the numbers and reach the 2048 tile! Supports small (3x3),(3x4),(3x5),\n
         classic (4x4),(4x5) large (5x5),(5x6), and Huge (6x6),board sizes. Be ready for a new challenge!</string>
-    <string name="textsecond">Super 2048 Plus puzzle Keep playing for high score after
-        collected 2048 tile Game is automatically saved and continue to play later.
+    <string name="textsecond">Super 2048 Plus puzzle Keep playing for high score after\n
+        collected 2048 tile Game is automatically saved and continue to play later.\n
         Beautiful, simple and classic design.</string>
     <string name="textthird">Block Tiles in Game. click and swipe sound with Background music</string>
-    <string name="textforth">High score and leaderboard for different board sizes.
-        Completely native implementation. Play on any part of the screen.
-        Classic game play with silky-smooth movements Swipe to move Undo button to reverse a swipe Detailed statistics
+    <string name="textforth">High score and leaderboard for different board sizes.\n
+        Completely native implementation. Play on any part of the screen.\n
+        Classic game play with silky-smooth movements Swipe to move Undo button to reverse a swipe Detailed statistics\n
         including best scores Always free with no purchase required Official version of the original puzzle game</string>
-    <string name="textfive">HOW TO PLAY: Swipe (up, down, left or right) to move the tiles.
-        When two tiles with the same number touch, they merge into one. When a 2048 tile is created,
+    <string name="textfive">HOW TO PLAY: Swipe (up, down, left or right) to move the tiles.\n
+        When two tiles with the same number touch, they merge into one. When a 2048 tile is created,\n
         the player wins! 8 .. 16 .. 128 .. 1024 .. 2048.
        </string>
-    <string name="textsix"> Short Description: 2048 is played on a plain 4×4 grid,
-        consisting of numbered tiles that slide when a player moves them using the four arrow keys. On each turn,
-        a new tile randomly appears on an empty spot on the board with a value of 2 or 4.
-        The tiles slide as far as possible in the chosen direction until they are stopped by another tile or the edge of the grid.
-        If two tiles of the same number collide while moving, they will merge into one tile with the total value of the two tiles colliding.
-        The resulting tile cannot merge with any other tile in the same move again. High scoring tiles emit a soft glow;
-        The highest possible tile is 131,072. If a move causes three consecutive tiles of the same value to move simultaneously,
-        only the two tiles that are farthest in the direction of motion will combine.
-        If all four spaces in a row or column are filled with tiles of the same value, a move parallel to that row/column will add the first two and
-        the last two. A scoreboard in the top right keeps track of the user\'s score. The user\'s score starts at zero,
-        and increases by the value of the new tile each time two tiles meet. The game is won when a tile with the value 2048
-        appears on the board. Players can go beyond this and reach higher scores. When the player has no legal moves
-        (there are no spaces and no adjacent tiles with the same value), the game ends.
+    <string name="textsix">2048 is played on a plain 4×4 grid,\n
+        consisting of numbered tiles that slide when a player moves them using the four arrow keys. On each turn,\n
+        a new tile randomly appears on an empty spot on the board with a value of 2 or 4.\n
+        The tiles slide as far as possible in the chosen direction until they are stopped by another tile or the edge of the grid.\n
+        If two tiles of the same number collide while moving, they will merge into one tile with the total value of the two tiles colliding.\n
+        The resulting tile cannot merge with any other tile in the same move again. High scoring tiles emit a soft glow;\n
+        The highest possible tile is 131,072. If a move causes three consecutive tiles of the same value to move simultaneously,\n
+        only the two tiles that are farthest in the direction of motion will combine.\n
+        If all four spaces in a row or column are filled with tiles of the same value, a move parallel to that row/column will add the first two and\n
+        the last two. A scoreboard in the top right keeps track of the user\'s score. The user\'s score starts at zero,\n
+        and increases by the value of the new tile each time two tiles meet. The game is won when a tile with the value 2048\n
+        appears on the board. Players can go beyond this and reach higher scores. When the player has no legal moves\n
+        (there are no spaces and no adjacent tiles with the same value), the game ends.\n
        </string>
-
-
-    <string name="about">About</string>
-    <string name="games">SIGN IN</string>
-    <string name="more_games">more games</string>
-    <string name="rate">rate us</string>
-    <string name="signin_other_error">Signin Error</string>
-    <string name="title_activity_fullscreen">FullscreenActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
-
-
 </resources>
