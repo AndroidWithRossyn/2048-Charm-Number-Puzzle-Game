@@ -5,6 +5,8 @@ import android.view.SurfaceHolder;
 
 import com.rossyn.blocktiles.game2048.presentation.components.GameViewCell;
 
+import timber.log.Timber;
+
 public class ThreadMain extends Thread {
 
     private SurfaceHolder surfaceHolder;
@@ -17,55 +19,57 @@ public class ThreadMain extends Thread {
         this.gameViewCell = gameViewCell;
     }
 
-    public void setRunning (boolean isRunning) {
+    public void setRunning(boolean isRunning) {
         running = isRunning;
     }
 
-    public void setSurfaceHolder(SurfaceHolder surfaceHolder){
-        this.surfaceHolder= surfaceHolder;
+    public void setSurfaceHolder(SurfaceHolder surfaceHolder) {
+        this.surfaceHolder = surfaceHolder;
     }
 
     @Override
     public void run() {
-        long startTime,timeMillis,waitTime;
-        int targetFPS = 60;
-        long targetTime = 1000/ targetFPS;
+        long targetTime = 1000 / 60; // 60 fps
 
-        while (running){
-            startTime = System.nanoTime();
+        while (running) {
+          long  startTime = System.nanoTime();
             Canvas canvas = null;
 
             try {
-                canvas =  surfaceHolder.lockCanvas();
-                synchronized (surfaceHolder) {
-                    gameViewCell.update();
-                    gameViewCell.draw(canvas);
+                canvas = surfaceHolder.lockCanvas();
+                if (canvas != null) {
+                    synchronized (surfaceHolder) {
+                        gameViewCell.update();
+                        gameViewCell.draw(canvas);
+                    }
                 }
-            } catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             } finally {
-                if( canvas !=  null){
+                if (canvas != null) {
                     try {
                         surfaceHolder.unlockCanvasAndPost(canvas);
-                    } catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
+                        Timber.e(e);
                     }
                 }
             }
-            timeMillis = (System.nanoTime() -startTime)/100000;
-            waitTime =  targetTime - timeMillis;
 
-            try {
-                if (waitTime > 0) {
-                    sleep(waitTime);
+            long elapsedTimeMs  = (System.nanoTime() - startTime) / 100000;
+            long waitTimeMs = targetTime - elapsedTimeMs;
 
-                }
-                } catch (Exception e) {
-                    e.printStackTrace();
+            if (waitTimeMs > 0) {
+                try {
+                    Thread.sleep(waitTimeMs);
+                } catch (InterruptedException e) {
+//                    Thread.currentThread().interrupt();
+                    Timber.e(e);
                 }
             }
-
         }
 
     }
+
+}
 

@@ -10,7 +10,13 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+import com.rossyn.blocktiles.game2048.BuildConfig;
 import com.rossyn.blocktiles.game2048.R;
+import com.rossyn.blocktiles.game2048.databinding.InfoActivityBinding;
 
 
 public class InfoActivity extends BaseActivity {
@@ -21,33 +27,26 @@ public class InfoActivity extends BaseActivity {
     }
 
 
-
+    private InfoActivityBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.info_activity);
+        binding = InfoActivityBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        ViewCompat.setOnApplyWindowInsetsListener(binding.getRoot(), (v, windowInsets) -> {
+//            Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemGestures());
+            v.setPadding(0, 0, 0, 0);
+            return windowInsets;
+        });
 
-
-        Animation scaleAnim = AnimationUtils.loadAnimation(InfoActivity.this, R.anim.scale_animation);
-        Button btnClose = findViewById(R.id.btn_close_about);
-        btnClose.startAnimation(scaleAnim);
-
-
-        btnClose.setOnClickListener(v -> {
+        binding.btnCloseAbout.startAnimation(scaleAnim);
+        binding.btnCloseAbout.setOnClickListener(v -> {
             finish();
             playClick();
         });
 
-        TextView version = findViewById(R.id.version);
-        try {
-            PackageManager manager = this.getPackageManager();
-            PackageInfo info = manager.getPackageInfo(this.getPackageName(), PackageManager.GET_ACTIVITIES);
-            version.setText("v" + info.versionName);
-        } catch (PackageManager.NameNotFoundException e) {
-            version.setVisibility(View.GONE);
-            throw new RuntimeException(e);
-        }
+        binding.version.setText(String.format("v %s", BuildConfig.VERSION_NAME));
 
 
     }

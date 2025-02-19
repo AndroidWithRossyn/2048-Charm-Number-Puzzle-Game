@@ -31,8 +31,8 @@ public class SplashActivity extends BaseActivity {
         binding = SplashActivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         ViewCompat.setOnApplyWindowInsetsListener(binding.getRoot(), (v, windowInsets) -> {
-            Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemGestures());
-            v.setPadding(insets.left, insets.top, insets.right, insets.bottom);
+//            Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemGestures());
+            v.setPadding(0, 0, 0, 0);
             return windowInsets;
         });
 

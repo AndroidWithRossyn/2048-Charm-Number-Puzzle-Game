@@ -7,13 +7,14 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 
+import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 
-import com.rossyn.blocktiles.game2048.presentation.activities.GameActivity;
 import com.rossyn.blocktiles.game2048.R;
 
 import java.util.ArrayList;
@@ -21,12 +22,18 @@ import java.util.ArrayList;
 
 public final class BitmapCreator {
 
-    private final Context context = GameActivity.getContext();
+    private final Context context;
     public static int cellDefaultHeight, cellDefaultWidth, exponent;
 
-    private final Paint mPaint = new Paint();
-    private Rect textBounds = new Rect();
-    private static ArrayList<Bitmap> bitmapArrayList = new ArrayList<>();
+    private final Paint mPaint;
+    private final Rect textBounds = new Rect();
+    private static final ArrayList<Bitmap> bitmapArrayList = new ArrayList<>();
+
+
+    public BitmapCreator(Context context) {
+        this.context = context.getApplicationContext();
+        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    }
 
     public int getCellDefaultWidth() {
         return cellDefaultWidth;
@@ -37,12 +44,13 @@ public final class BitmapCreator {
     }
 
     public Bitmap createBlockTile() {
-        Drawable drawable = context.getDrawable(R.drawable.block_shape);
+        Drawable drawable = ContextCompat.getDrawable(context, R.drawable.block_shape);
         Bitmap bitmap = Bitmap.createBitmap(cellDefaultWidth, cellDefaultHeight, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
-        assert drawable != null;
-        drawable.setBounds(0, 0, cellDefaultWidth, cellDefaultHeight);
-        drawable.draw(canvas);
+        if (drawable != null) {
+            drawable.setBounds(0, 0, cellDefaultWidth, cellDefaultHeight);
+            drawable.draw(canvas);
+        }
         return bitmap;
     }
 
@@ -53,28 +61,35 @@ public final class BitmapCreator {
         Bitmap bitmap = Bitmap.createBitmap(cellDefaultWidth, cellDefaultHeight, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
 
-
         Typeface customTypeface = ResourcesCompat.getFont(context, R.font.baloo);
         mPaint.setTypeface(customTypeface);
         mPaint.setColor(Color.WHITE);
         int textSize = 130;
         mPaint.setTextSize(textSize);
+
+
         drawable.setBounds(0, 0, cellDefaultWidth, cellDefaultHeight);
         mPaint.getTextBounds(text, 0, text.length(), textBounds);
+
+
         while (textBounds.height() > cellDefaultWidth / 2.5 && textSize >= 10) {
             textSize -= 20;
             mPaint.setTextSize(textSize);
             mPaint.getTextBounds(text, 0, text.length(), textBounds);
-            mPaint.getTextBounds(text, 0, text.length(), textBounds);
         }
+
         while (textBounds.width() > cellDefaultWidth - 20 && textSize >= 10) {
             textSize -= 10;
             mPaint.setTextSize(textSize);
             mPaint.getTextBounds(text, 0, text.length(), textBounds);
-            mPaint.getTextBounds(text, 0, text.length(), textBounds);
         }
+
+
         drawable.draw(canvas);
-        canvas.drawText(text, (float) cellDefaultWidth / 2 - textBounds.exactCenterX(), (float) cellDefaultHeight / 2 - textBounds.exactCenterY(), mPaint);
+        float x = (cellDefaultWidth - textBounds.width()) / 2f - textBounds.left;
+        float y = (cellDefaultHeight + textBounds.height()) / 2f - textBounds.bottom;
+        canvas.drawText(text, x, y, mPaint);
+
         bitmapArrayList.add(bitmap);
     }
 
@@ -84,16 +99,14 @@ public final class BitmapCreator {
         }
 
         double val = Math.log(value) / Math.log(exponent);
-        val = Math.round(val);
-        int index = (int) (val - 1);
-
+        int index = (int) Math.round(val) - 1;
 
         if (bitmapArrayList.isEmpty()) {
             for (int i = 0; i < 12; i++) {
                 createBitmap(i);
             }
         }
-        if (index == bitmapArrayList.size()) {
+        if (index >= bitmapArrayList.size()) {
             createBitmap(index);
         }
 
@@ -105,51 +118,50 @@ public final class BitmapCreator {
     }
 
     public Drawable createDrawable(int index) {
-
-        Drawable drawable = context.getDrawable(R.drawable.cell_shape);
+        Drawable drawable = ContextCompat.getDrawable(context, R.drawable.cell_shape);
         if (drawable != null) {
+            int color;
             switch (index) {
-
                 case 0:
-                    drawable.setColorFilter(context.getResources().getColor(R.color.value2), PorterDuff.Mode.SRC_OVER);
+                    color = ContextCompat.getColor(context, R.color.value2);
                     break;
                 case 1:
-                    drawable.setColorFilter(context.getResources().getColor(R.color.value4), PorterDuff.Mode.SRC_OVER);
+                    color = ContextCompat.getColor(context, R.color.value4);
                     break;
                 case 2:
-                    drawable.setColorFilter(context.getResources().getColor(R.color.value8), PorterDuff.Mode.SRC_OVER);
+                    color = ContextCompat.getColor(context, R.color.value8);
                     break;
                 case 3:
-                    drawable.setColorFilter(context.getResources().getColor(R.color.value16), PorterDuff.Mode.SRC_OVER);
+                    color = ContextCompat.getColor(context, R.color.value16);
                     break;
                 case 4:
-                    drawable.setColorFilter(context.getResources().getColor(R.color.value32), PorterDuff.Mode.SRC_OVER);
+                    color = ContextCompat.getColor(context, R.color.value32);
                     break;
                 case 5:
-                    drawable.setColorFilter(context.getResources().getColor(R.color.value64), PorterDuff.Mode.SRC_OVER);
+                    color = ContextCompat.getColor(context, R.color.value64);
                     break;
                 case 6:
-                    drawable.setColorFilter(context.getResources().getColor(R.color.value128), PorterDuff.Mode.SRC_OVER);
+                    color = ContextCompat.getColor(context, R.color.value128);
                     break;
                 case 7:
-                    drawable.setColorFilter(context.getResources().getColor(R.color.value256), PorterDuff.Mode.SRC_OVER);
+                    color = ContextCompat.getColor(context, R.color.value256);
                     break;
                 case 8:
-                    drawable.setColorFilter(context.getResources().getColor(R.color.value512), PorterDuff.Mode.SRC_OVER);
+                    color = ContextCompat.getColor(context, R.color.value512);
                     break;
                 case 9:
-                    drawable.setColorFilter(context.getResources().getColor(R.color.value1024), PorterDuff.Mode.SRC_OVER);
+                    color = ContextCompat.getColor(context, R.color.value1024);
                     break;
                 case 10:
-                    drawable.setColorFilter(context.getResources().getColor(R.color.value2048), PorterDuff.Mode.SRC_OVER);
+                    color = ContextCompat.getColor(context, R.color.value2048);
                     break;
                 default:
-                    drawable.setColorFilter(context.getResources().getColor(R.color.valueOther), PorterDuff.Mode.SRC_OVER);
+                    color = ContextCompat.getColor(context, R.color.valueOther);
                     break;
             }
+
+            drawable.setColorFilter(new PorterDuffColorFilter(color, PorterDuff.Mode.SRC_OVER));
         }
         return drawable;
     }
-
-
 }

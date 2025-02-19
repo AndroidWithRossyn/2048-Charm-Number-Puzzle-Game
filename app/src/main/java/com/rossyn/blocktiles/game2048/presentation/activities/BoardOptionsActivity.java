@@ -25,9 +25,15 @@ import android.widget.TextView;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import com.rossyn.blocktiles.game2048.R;
+import com.rossyn.blocktiles.game2048.databinding.BoardOptionsActivityBinding;
 import com.rossyn.blocktiles.game2048.domain.models.BoardType;
+import com.rossyn.blocktiles.game2048.presentation.utils.AnimExt;
 import com.rossyn.blocktiles.game2048.services.Music;
 import com.rossyn.blocktiles.game2048.presentation.interfaces.OnHomePressedListener;
 import com.rossyn.blocktiles.game2048.data.prefs.SharedPref;
@@ -40,13 +46,11 @@ public class BoardOptionsActivity extends BaseActivity {
     private boolean secondViewIsVisible, thirdViewIsVisible;
 
     private ArrayList<BoardType> currentDisplayedBoards;
-    private ArrayList<BoardType> squareBoards = new ArrayList<>();
-    private ArrayList<BoardType> rectangleBoards = new ArrayList<>();
+    private final ArrayList<BoardType> squareBoards = new ArrayList<>();
+    private final ArrayList<BoardType> rectangleBoards = new ArrayList<>();
 
     private RelativeLayout layoutFirst, layoutSecond, layoutThird;
     private Animation rightAnimIn, leftAnimIn, rightAnimOut, leftAnimOut;
-
-
 
     @Override
     protected void onBackPressedCustom() {
@@ -87,10 +91,19 @@ public class BoardOptionsActivity extends BaseActivity {
         }
     }
 
+    private BoardOptionsActivityBinding binding;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.board_options_activity);
+        binding = BoardOptionsActivityBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.getRoot(), (v, windowInsets) -> {
+//            Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemGestures());
+            v.setPadding(0, 0, 0, 0);
+            return windowInsets;
+        });
 
         boardsIndex = 0;
         modesIndex = 0;
@@ -103,110 +116,87 @@ public class BoardOptionsActivity extends BaseActivity {
         setBoardSelecting();
         setExponentSelecting();
 
-        layoutFirst = findViewById(R.id.select_layout_frist);
-        layoutSecond = findViewById(R.id.select_layout_second);
-        layoutThird = findViewById(R.id.select_layout_third);
+        layoutFirst = binding.selectLayoutFrist;
+        layoutSecond = binding.selectLayoutSecond;
+        layoutThird = binding.selectLayoutThird;
 
-        Animation scaleAnimation = AnimationUtils.loadAnimation(BoardOptionsActivity.this, R.anim.scale_animation);
+
 
         rightAnimIn = AnimationUtils.loadAnimation(BoardOptionsActivity.this, R.anim.slide_in_right_side);
         leftAnimIn = AnimationUtils.loadAnimation(BoardOptionsActivity.this, R.anim.slide_in_left_side);
         rightAnimOut = AnimationUtils.loadAnimation(BoardOptionsActivity.this, R.anim.slide_out_right_side);
         leftAnimOut = AnimationUtils.loadAnimation(BoardOptionsActivity.this, R.anim.slide_out_left_side);
 
-        Button btnNextFirst = findViewById(R.id.button_next);
-        btnNextFirst.setAnimation(scaleAnimation);
-        btnNextFirst.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                playClick();
-                leftAnimOut.setAnimationListener(new Animation.AnimationListener() {
-                    public void onAnimationStart(Animation animation) {
-                    }
 
-                    public void onAnimationRepeat(Animation animation) {
-                    }
+        binding.buttonNext.setAnimation(scaleAnim);
+        binding.buttonNext.setOnClickListener(v -> {
+            playClick();
+            leftAnimOut.setAnimationListener(new Animation.AnimationListener() {
+                public void onAnimationStart(Animation animation) {
+                }
 
-                    public void onAnimationEnd(Animation animation) {
-                        layoutFirst.setVisibility(View.GONE);
-                        layoutSecond.startAnimation(rightAnimIn);
-                        layoutSecond.setVisibility(View.VISIBLE);
-                        secondViewIsVisible = true;
+                public void onAnimationRepeat(Animation animation) {
+                }
 
-                    }
-                });
-                layoutFirst.startAnimation(leftAnimOut);
+                public void onAnimationEnd(Animation animation) {
+                    layoutFirst.setVisibility(View.GONE);
+                    layoutSecond.startAnimation(rightAnimIn);
+                    layoutSecond.setVisibility(View.VISIBLE);
+                    secondViewIsVisible = true;
 
-            }
+                }
+            });
+            layoutFirst.startAnimation(leftAnimOut);
+
         });
 
-        Button btnNextSecond = findViewById(R.id.button_next_choose_bord);
-        btnNextSecond.setAnimation(scaleAnimation);
-        btnNextSecond.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                playClick();
-                leftAnimOut.setAnimationListener(new Animation.AnimationListener() {
-                    public void onAnimationStart(Animation animation) {
-                    }
+        binding.buttonNextChooseBord.setAnimation(scaleAnim);
+        binding.buttonNextChooseBord.setOnClickListener(v -> {
+            playClick();
+            leftAnimOut.setAnimationListener(new Animation.AnimationListener() {
+                public void onAnimationStart(Animation animation) {
+                }
 
-                    public void onAnimationRepeat(Animation animation) {
-                    }
+                public void onAnimationRepeat(Animation animation) {
+                }
 
-                    public void onAnimationEnd(Animation animation) {
-                        layoutSecond.setVisibility(View.GONE);
-                        layoutThird.startAnimation(rightAnimIn);
-                        layoutThird.setVisibility(View.VISIBLE);
-                        thirdViewIsVisible = true;
-                    }
-                });
-                layoutSecond.startAnimation(leftAnimOut);
+                public void onAnimationEnd(Animation animation) {
+                    layoutSecond.setVisibility(View.GONE);
+                    layoutThird.startAnimation(rightAnimIn);
+                    layoutThird.setVisibility(View.VISIBLE);
+                    thirdViewIsVisible = true;
+                }
+            });
+            layoutSecond.startAnimation(leftAnimOut);
 
-            }
         });
 
-        Button btnPlay = findViewById(R.id.button_play);
-        btnPlay.setAnimation(scaleAnimation);
-        btnPlay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                playClick();
-                Intent intent = new Intent(BoardOptionsActivity.this, GameActivity.class);
-                intent.putExtra("rows", currentDisplayedBoards.get(boardsIndex).rows);
-                intent.putExtra("cols", currentDisplayedBoards.get(boardsIndex).cols);
-                intent.putExtra("exponent", exponent);
-                intent.putExtra("game_mode", modesIndex);
-                startActivity(intent);
-            }
+
+        binding.buttonPlay.setAnimation(scaleAnim);
+        binding.buttonPlay.setOnClickListener(v -> {
+            playClick();
+            Intent intent = new Intent(BoardOptionsActivity.this, GameActivity.class);
+            intent.putExtra("rows", currentDisplayedBoards.get(boardsIndex).rows);
+            intent.putExtra("cols", currentDisplayedBoards.get(boardsIndex).cols);
+            intent.putExtra("exponent", exponent);
+            intent.putExtra("game_mode", modesIndex);
+            startActivity(intent);
         });
 
     }
 
 
     private void initBoardsArrays() {
-        BoardType boardType;
+        squareBoards.add(new BoardType(4, 4, ContextCompat.getDrawable(this, R.drawable.board_4x4)));
+        squareBoards.add(new BoardType(5, 5, ContextCompat.getDrawable(this, R.drawable.board_5x5)));
+        squareBoards.add(new BoardType(6, 6, ContextCompat.getDrawable(this, R.drawable.board_6x6)));
+        squareBoards.add(new BoardType(8, 8, ContextCompat.getDrawable(this, R.drawable.board_8x8)));
+        squareBoards.add(new BoardType(3, 3, ContextCompat.getDrawable(this, R.drawable.board_3x3)));
 
-
-        boardType = new BoardType(4, 4, getDrawable(R.drawable.board_4x4));
-        squareBoards.add(boardType);
-        boardType = new BoardType(5, 5, getDrawable(R.drawable.board_5x5));
-        squareBoards.add(boardType);
-        boardType = new BoardType(6, 6, getDrawable(R.drawable.board_6x6));
-        squareBoards.add(boardType);
-        boardType = new BoardType(8, 8, getDrawable(R.drawable.board_8x8));
-        squareBoards.add(boardType);
-        boardType = new BoardType(3, 3, getDrawable(R.drawable.board_3x3));
-        squareBoards.add(boardType);
-
-        boardType = new BoardType(4, 3, getDrawable(R.drawable.board_3x4));
-        rectangleBoards.add(boardType);
-        boardType = new BoardType(5, 3, getDrawable(R.drawable.board_3x5));
-        rectangleBoards.add(boardType);
-        boardType = new BoardType(5, 4, getDrawable(R.drawable.board_4x5));
-        rectangleBoards.add(boardType);
-        boardType = new BoardType(6, 5, getDrawable(R.drawable.board_5x6));
-        rectangleBoards.add(boardType);
-
+        rectangleBoards.add(new BoardType(4, 3, ContextCompat.getDrawable(this, R.drawable.board_3x4)));
+        rectangleBoards.add(new BoardType(5, 3, ContextCompat.getDrawable(this, R.drawable.board_3x5)));
+        rectangleBoards.add(new BoardType(5, 4, ContextCompat.getDrawable(this, R.drawable.board_4x5)));
+        rectangleBoards.add(new BoardType(6, 5, ContextCompat.getDrawable(this, R.drawable.board_5x6)));
     }
 
 
@@ -215,28 +205,25 @@ public class BoardOptionsActivity extends BaseActivity {
         final ArrayList<String> modeNames = new ArrayList<>();
         final ArrayList<String> modeExp = new ArrayList<>();
 
-        modeTypes.add(getDrawable(R.drawable.classic_mode));
+        modeTypes.add(ContextCompat.getDrawable(this, R.drawable.classic_mode));
         modeNames.add(getString(R.string.mode_classic));
         modeExp.add(getString(R.string.mode_exp_classic));
 
-        modeTypes.add(getDrawable(R.drawable.block_mode));
+        modeTypes.add(ContextCompat.getDrawable(this, R.drawable.block_mode));
         modeNames.add(getString(R.string.mode_blocks));
         modeExp.add(getString(R.string.mode_exp_blocks));
-        modeTypes.add(getDrawable(R.drawable.anim_mode_suffile));
+        modeTypes.add(ContextCompat.getDrawable(this, R.drawable.anim_mode_suffile));
         modeNames.add(getString(R.string.mode_shuffle));
         modeExp.add(getString(R.string.mode_exp_shuffle));
 
-        final TextView tvModeExp = findViewById(R.id.textview_mode_exp);
-        final TextView tvModeName = findViewById(R.id.textview_mode_type);
-        final ImageView ivMode = findViewById(R.id.imageview_select_mode);
-        ivMode.setImageDrawable(modeTypes.get(0));
 
-        final ImageButton ibBtnLeft = findViewById(R.id.left_btn);
-        ImageButton ibBtnRight = findViewById(R.id.right_btn);
+        binding.imageviewSelectMode.setImageDrawable(modeTypes.get(0));
+
+
         AnimationDrawable animationDrawable = (AnimationDrawable) modeTypes.get(2);
         animationDrawable.start();
 
-        ibBtnLeft.setOnClickListener(v -> {
+        binding.leftBtn.setOnClickListener(v -> {
             playClick();
             if (modesIndex == 0) {
                 modesIndex = 2;
@@ -254,15 +241,15 @@ public class BoardOptionsActivity extends BaseActivity {
 
                 @Override
                 public void onAnimationEnd(Animation animation) {
-                    ivMode.setImageDrawable(modeTypes.get(modesIndex));
-                    tvModeName.setText(modeNames.get(modesIndex));
-                    tvModeExp.setText(modeExp.get(modesIndex));
-                    ivMode.startAnimation(leftAnimIn);
+                    binding.imageviewSelectMode.setImageDrawable(modeTypes.get(modesIndex));
+                    binding.textviewModeType.setText(modeNames.get(modesIndex));
+                    binding.textviewModeExp.setText(modeExp.get(modesIndex));
+                    binding.imageviewSelectMode.startAnimation(leftAnimIn);
                 }
             });
-            ivMode.startAnimation(rightAnimOut);
+            binding.imageviewSelectMode.startAnimation(rightAnimOut);
         });
-        ibBtnRight.setOnClickListener(v -> {
+        binding.rightBtn.setOnClickListener(v -> {
             playClick();
             if (modesIndex == 2) {
                 modesIndex = 0;
@@ -280,13 +267,13 @@ public class BoardOptionsActivity extends BaseActivity {
 
                 @Override
                 public void onAnimationEnd(Animation animation) {
-                    ivMode.setImageDrawable(modeTypes.get(modesIndex));
-                    tvModeName.setText(modeNames.get(modesIndex));
-                    tvModeExp.setText(modeExp.get(modesIndex));
-                    ivMode.startAnimation(rightAnimIn);
+                    binding.imageviewSelectMode.setImageDrawable(modeTypes.get(modesIndex));
+                    binding.textviewModeType.setText(modeNames.get(modesIndex));
+                    binding.textviewModeExp.setText(modeExp.get(modesIndex));
+                    binding.imageviewSelectMode.startAnimation(rightAnimIn);
                 }
             });
-            ivMode.startAnimation(leftAnimOut);
+            binding.imageviewSelectMode.startAnimation(leftAnimOut);
 
         });
 
@@ -300,48 +287,43 @@ public class BoardOptionsActivity extends BaseActivity {
         exponentExpText.add(getString(R.string.exponent_exp_4));
         exponentExpText.add(getString(R.string.exponent_exp_5));
         Animation btnScaleAnim = AnimationUtils.loadAnimation(BoardOptionsActivity.this, R.anim.scale_animation);
-        final RadioGroup rgExponentTop = findViewById(R.id.rg_exponent_top);
-        final RadioGroup rgExponentBottom = findViewById(R.id.rg_exponent_bottom);
-        final RadioButton radioButton2 = findViewById(R.id.rb_exponent_2);
-        radioButton2.setAnimation(btnScaleAnim);
-        final RadioButton radioButton3 = findViewById(R.id.rb_exponent_3);
-        radioButton3.setAnimation(btnScaleAnim);
-        final RadioButton radioButton4 = findViewById(R.id.rb_exponent_4);
-        radioButton4.setAnimation(btnScaleAnim);
-        final RadioButton radioButton5 = findViewById(R.id.rb_exponent_5);
-        radioButton5.setAnimation(btnScaleAnim);
-        final TextView textViewExponentExp = findViewById(R.id.tv_exponent_exp);
 
-        radioButton2.setOnClickListener(v -> {
+
+        binding.rbExponent2.setAnimation(btnScaleAnim);
+        binding.rbExponent3.setAnimation(btnScaleAnim);
+        binding.rbExponent4.setAnimation(btnScaleAnim);
+        binding.rbExponent5.setAnimation(btnScaleAnim);
+
+        binding.rbExponent2.setOnClickListener(v -> {
             playClick();
-            radioButton2.setChecked(true);
-            rgExponentBottom.clearCheck();
+            binding.rbExponent2.setChecked(true);
+            binding.rgExponentBottom.clearCheck();
             exponent = 2;
-            textViewExponentExp.setText(exponentExpText.get(0));
+            binding.tvExponentExp.setText(exponentExpText.get(0));
 
         });
-        radioButton3.setOnClickListener(v -> {
+        binding.rbExponent3.setOnClickListener(v -> {
             playClick();
-            radioButton3.setChecked(true);
-            rgExponentBottom.clearCheck();
+            binding.rbExponent3.setChecked(true);
+            binding.rgExponentBottom.clearCheck();
             exponent = 3;
-            textViewExponentExp.setText(exponentExpText.get(1));
+            binding.tvExponentExp.setText(exponentExpText.get(1));
 
         });
-        radioButton4.setOnClickListener(v -> {
+        binding.rbExponent4.setOnClickListener(v -> {
             playClick();
-            radioButton4.setChecked(true);
-            rgExponentTop.clearCheck();
+            binding.rbExponent4.setChecked(true);
+            binding.rgExponentTop.clearCheck();
             exponent = 4;
-            textViewExponentExp.setText(exponentExpText.get(2));
+            binding.tvExponentExp.setText(exponentExpText.get(2));
 
         });
-        radioButton5.setOnClickListener(v -> {
+        binding.rbExponent5.setOnClickListener(v -> {
             playClick();
-            radioButton5.setChecked(true);
-            rgExponentTop.clearCheck();
+            binding.rbExponent5.setChecked(true);
+            binding.rgExponentTop.clearCheck();
             exponent = 5;
-            textViewExponentExp.setText(exponentExpText.get(3));
+            binding.tvExponentExp.setText(exponentExpText.get(3));
         });
 
     }
@@ -349,43 +331,35 @@ public class BoardOptionsActivity extends BaseActivity {
     private void setBoardSelecting() {
 
         currentDisplayedBoards = squareBoards;
-        final TextView tvBoardType = findViewById(R.id.tv_game_size);
-        final ImageView ivBoardType = findViewById(R.id.choose_game_image);
-        ivBoardType.setImageDrawable(currentDisplayedBoards.get(0).drawable);
-        tvBoardType.setText(currentDisplayedBoards.get(0).getTypeString());
-        final ImageButton btnLeft = findViewById(R.id.button_left_board_type);
-        ImageButton btnRight = findViewById(R.id.button_right_board_type);
+        binding.chooseGameImage.setImageDrawable(currentDisplayedBoards.get(0).drawable);
+        binding.tvGameSize.setText(currentDisplayedBoards.get(0).getTypeString());
+
+        binding.radioButtonSquare.setTextColor(Color.rgb(90, 85, 83));
+        binding.radioButtonRectangle.setTextColor(Color.rgb(167, 168, 168));
 
 
-        final RadioGroup shapeRadioGroup = findViewById(R.id.radiogroup_board_shape);
-        final RadioButton radioButtonRectangle = findViewById(R.id.radio_button_rectangle);
-        final RadioButton radioButtonSquare = findViewById(R.id.radio_button_square);
-        radioButtonSquare.setTextColor(Color.rgb(90, 85, 83));
-        radioButtonRectangle.setTextColor(Color.rgb(167, 168, 168));
-
-
-        shapeRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+        binding.radiogroupBoardShape.setOnCheckedChangeListener((group, checkedId) -> {
             playClick();
-            if (checkedId == radioButtonRectangle.getId()) {
+            if (checkedId == binding.radioButtonRectangle.getId()) {
                 boardsIndex = 0;
                 currentDisplayedBoards = rectangleBoards;
-                tvBoardType.setText(currentDisplayedBoards.get(boardsIndex).getTypeString());
-                ivBoardType.setImageDrawable(currentDisplayedBoards.get(boardsIndex).drawable);
-                radioButtonRectangle.setTextColor(Color.rgb(90, 85, 83));
-                radioButtonSquare.setTextColor(Color.rgb(167, 168, 168));
+                binding.tvGameSize.setText(currentDisplayedBoards.get(boardsIndex).getTypeString());
+                binding.chooseGameImage.setImageDrawable(currentDisplayedBoards.get(boardsIndex).drawable);
+                binding.radioButtonRectangle.setTextColor(Color.rgb(90, 85, 83));
+                binding.radioButtonSquare.setTextColor(Color.rgb(167, 168, 168));
 
-            } else if (checkedId == radioButtonSquare.getId()) {
+            } else if (checkedId == binding.radioButtonSquare.getId()) {
                 boardsIndex = 0;
                 currentDisplayedBoards = squareBoards;
-                tvBoardType.setText(currentDisplayedBoards.get(boardsIndex).getTypeString());
-                ivBoardType.setImageDrawable(currentDisplayedBoards.get(boardsIndex).drawable);
-                radioButtonSquare.setTextColor(Color.rgb(90, 85, 83));
-                radioButtonRectangle.setTextColor(Color.rgb(167, 168, 168));
+                binding.tvGameSize.setText(currentDisplayedBoards.get(boardsIndex).getTypeString());
+                binding.chooseGameImage.setImageDrawable(currentDisplayedBoards.get(boardsIndex).drawable);
+                binding.radioButtonSquare.setTextColor(Color.rgb(90, 85, 83));
+                binding.radioButtonRectangle.setTextColor(Color.rgb(167, 168, 168));
             }
         });
 
 
-        btnLeft.setOnClickListener(v -> {
+        binding.buttonLeftBoardType.setOnClickListener(v -> {
             playClick();
             if (boardsIndex == 0) {
                 boardsIndex = currentDisplayedBoards.size() - 1;
@@ -403,15 +377,16 @@ public class BoardOptionsActivity extends BaseActivity {
 
                 @Override
                 public void onAnimationEnd(Animation animation) {
-                    ivBoardType.setImageDrawable(currentDisplayedBoards.get(boardsIndex).drawable);
-                    ivBoardType.startAnimation(leftAnimIn);
-                    tvBoardType.setText(currentDisplayedBoards.get(boardsIndex).getTypeString());
+                    binding.chooseGameImage.setImageDrawable(currentDisplayedBoards.get(boardsIndex).drawable);
+                    binding.chooseGameImage.startAnimation(leftAnimIn);
+                    binding.tvGameSize.setText(currentDisplayedBoards.get(boardsIndex).getTypeString());
                 }
             });
-            ivBoardType.startAnimation(rightAnimOut);
+            binding.chooseGameImage.startAnimation(rightAnimOut);
 
         });
-        btnRight.setOnClickListener(v -> {
+
+        binding.buttonRightBoardType.setOnClickListener(v -> {
             playClick();
             if (boardsIndex == currentDisplayedBoards.size() - 1) {
                 boardsIndex = 0;
@@ -429,12 +404,12 @@ public class BoardOptionsActivity extends BaseActivity {
 
                 @Override
                 public void onAnimationEnd(Animation animation) {
-                    ivBoardType.setImageDrawable(currentDisplayedBoards.get(boardsIndex).drawable);
-                    ivBoardType.startAnimation(rightAnimIn);
-                    tvBoardType.setText(currentDisplayedBoards.get(boardsIndex).getTypeString());
+                    binding.chooseGameImage.setImageDrawable(currentDisplayedBoards.get(boardsIndex).drawable);
+                    binding.chooseGameImage.startAnimation(rightAnimIn);
+                    binding.tvGameSize.setText(currentDisplayedBoards.get(boardsIndex).getTypeString());
                 }
             });
-            ivBoardType.startAnimation(leftAnimOut);
+            binding.chooseGameImage.startAnimation(leftAnimOut);
 
 
         });

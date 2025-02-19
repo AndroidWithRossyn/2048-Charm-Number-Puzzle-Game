@@ -3,6 +3,8 @@
     <string name="developed_by">Developed by Rohitraj Khorwal</string>
     <string name="copyright_rossyn">© 2021–2025 Rossyn\nAll rights reserved</string>
 
+    <string name="moregamesurl">https://github.com/AndroidWithRossyn</string>
+
     <string name="about">About</string>
     <string name="rate">Rate us</string>
     <string name="more_games">More Games</string>
@@ -33,7 +35,7 @@
     <string name="off">Off</string>
     <string name="play">Play !</string>
     <string name="next">Next</string>
-    <string name="settings">Settings</string>
+    <string name="settingsDialog">Settings</string>
     <string name="music">Music</string>
     <string name="sound">Sound</string>
     <string name="close">Close</string>
@@ -76,4 +78,5 @@
         appears on the board. Players can go beyond this and reach higher scores. When the player has no legal moves\n
         (there are no spaces and no adjacent tiles with the same value), the game ends.\n
        </string>
+
 </resources>

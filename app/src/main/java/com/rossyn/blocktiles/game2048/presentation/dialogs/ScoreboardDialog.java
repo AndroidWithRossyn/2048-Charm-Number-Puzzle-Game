@@ -1,0 +1,181 @@
+package com.rossyn.blocktiles.game2048.presentation.dialogs;
+
+import static android.content.Context.MODE_PRIVATE;
+
+import android.app.Dialog;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+
+import androidx.annotation.NonNull;
+
+import com.rossyn.blocktiles.game2048.R;
+import com.rossyn.blocktiles.game2048.data.prefs.ScoreBoardBuilder;
+import com.rossyn.blocktiles.game2048.data.prefs.SharedPref;
+import com.rossyn.blocktiles.game2048.databinding.DialogScoreboardBinding;
+import com.rossyn.blocktiles.game2048.domain.models.ScoreModel;
+import com.rossyn.blocktiles.game2048.presentation.adapter.ScoreAdapter;
+
+import java.util.ArrayList;
+
+public class ScoreboardDialog extends Dialog {
+    private DialogScoreboardBinding binding;
+    private final SharedPreferences sharedPreferences;
+    private final ScoreboardDialogListener listener;
+
+    private final Animation rightInAnim;
+    private final Animation leftInAnim;
+    private final Animation rightOutAnim;
+    private final Animation leftOutAnim;
+    private final Animation scaleAnim;
+
+    private ScoreAdapter scoreAdapterClassic;
+    private ScoreAdapter scoreAdapterBlocks;
+    private ScoreAdapter scoreAdapterShuffle;
+
+    private final int[] index = {0};
+
+
+    public interface ScoreboardDialogListener {
+        void playSound();
+    }
+
+    public ScoreboardDialog(@NonNull Context context, @NonNull ScoreboardDialogListener listener) {
+        super(context);
+        this.sharedPreferences = context.getSharedPreferences(SharedPref.SHARED_PREF_FILE_NAME, MODE_PRIVATE);
+        this.listener = listener;
+        rightInAnim = AnimationUtils.loadAnimation(context, R.anim.slide_in_right_side);
+        leftInAnim = AnimationUtils.loadAnimation(context, R.anim.slide_in_left_side);
+        rightOutAnim = AnimationUtils.loadAnimation(context, R.anim.slide_out_right_side);
+        leftOutAnim = AnimationUtils.loadAnimation(context, R.anim.slide_out_left_side);
+        scaleAnim = AnimationUtils.loadAnimation(context, R.anim.scale_animation);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        binding = DialogScoreboardBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        int width = (int) (getContext().getResources().getDisplayMetrics().widthPixels * 0.90);
+        int height = (int) (getContext().getResources().getDisplayMetrics().heightPixels * 0.90);
+        if (getWindow() != null) {
+            getWindow().setLayout(width, height);
+            getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
+
+
+        ArrayList<ScoreModel> classicScoreModels = ScoreBoardBuilder.createClassicArrayList(sharedPreferences, "0");
+        ArrayList<ScoreModel> blocksScoreModels = ScoreBoardBuilder.createClassicArrayList(sharedPreferences, "1");
+        ArrayList<ScoreModel> shuffleScoreModels = ScoreBoardBuilder.createClassicArrayList(sharedPreferences, "2");
+
+
+        scoreAdapterClassic = new ScoreAdapter(classicScoreModels);
+        scoreAdapterBlocks = new ScoreAdapter(blocksScoreModels);
+        scoreAdapterShuffle = new ScoreAdapter(shuffleScoreModels);
+
+
+        binding.listviewScoreBoard.setAdapter(scoreAdapterClassic);
+        binding.textviewModeType.setText(getContext().getString(R.string.mode_classic));
+
+
+        binding.rightBtn.startAnimation(scaleAnim);
+        binding.rightBtn.setOnClickListener(v -> {
+            if (index[0] == 2) {
+                index[0] = 0;
+            } else {
+                index[0]++;
+            }
+            leftOutAnim.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    switch (index[0]) {
+                        case 0:
+                            playClick();
+                            binding.listviewScoreBoard.setAdapter(scoreAdapterClassic);
+                            binding.textviewModeType.setText(getContext().getString(R.string.mode_classic));
+                            break;
+                        case 1:
+                            playClick();
+                            binding.listviewScoreBoard.setAdapter(scoreAdapterBlocks);
+                            binding.textviewModeType.setText(getContext().getString(R.string.mode_blocks));
+                            break;
+                        case 2:
+                            playClick();
+                            binding.listviewScoreBoard.setAdapter(scoreAdapterShuffle);
+                            binding.textviewModeType.setText(getContext().getString(R.string.mode_shuffle));
+                            break;
+                    }
+                    binding.listviewScoreBoard.startAnimation(rightInAnim);
+                }
+            });
+            binding.listviewScoreBoard.startAnimation(leftOutAnim);
+        });
+
+
+        binding.leftBtn.startAnimation(scaleAnim);
+        binding.leftBtn.setOnClickListener(v -> {
+            if (index[0] == 0) {
+                index[0] = 2;
+            } else {
+                index[0]--;
+            }
+            rightOutAnim.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    switch (index[0]) {
+                        case 0:
+                            playClick();
+                            binding.listviewScoreBoard.setAdapter(scoreAdapterClassic);
+                            binding.textviewModeType.setText(getContext().getString(R.string.mode_classic));
+                            break;
+                        case 1:
+                            playClick();
+                            binding.listviewScoreBoard.setAdapter(scoreAdapterBlocks);
+                            binding.textviewModeType.setText(getContext().getString(R.string.mode_blocks));
+                            break;
+                        case 2:
+                            playClick();
+                            binding.listviewScoreBoard.setAdapter(scoreAdapterShuffle);
+                            binding.textviewModeType.setText(getContext().getString(R.string.mode_shuffle));
+                            break;
+                    }
+                    binding.listviewScoreBoard.startAnimation(leftInAnim);
+                }
+            });
+            binding.listviewScoreBoard.startAnimation(rightOutAnim);
+        });
+
+
+        binding.closeButton.setAnimation(scaleAnim);
+        binding.closeButton.setOnClickListener(v -> {
+            playClick();
+            dismiss();
+        });
+    }
+
+
+    private void playClick() {
+        listener.playSound();
+    }
+}

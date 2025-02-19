@@ -1,3 +1,13 @@
+## 19 FEB 2025
+
+- java project migrated with view binding
+- BaseActivity Scale Animation added
+- crash issue fixed
+- deprecated methods improved
+- gameListener used for game over and win
+- dialogs moved to separate package
+- layout files optimized
+
 ## 31 JAN 2025
 
 - app added,
@@ -5,7 +15,7 @@
 
 ## 29 JAN 2025
 
-- Shared Preferences added for settings and configurations
+- Shared Preferences added for settingsDialog and configurations
 - Boards, BoardType, Exponent, GameMode classes implemented
 - Optimized Sound Handling: Replaced `MediaPlayer` with `SoundPool` for efficient click sounds
 - BoardOptionsActivity fully implemented

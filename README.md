@@ -3,12 +3,8 @@
   <h4 align="center">Marge Tiles Brain Puzzle 2048 Game. Very simple game yet insanely addictive!
  </h4>
 
-<div align="center">
-  
-<a href="mailto:banrossyn@gmail.com"><img src="https://img.shields.io/badge/Gmail-EA4335.svg?logo=Gmail&logoColor=white"></a>
-[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/rohitraj.khorwal) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/rohitrajkhorwal/) [![Medium](https://img.shields.io/badge/Medium-12100E?logo=medium&logoColor=white)](https://medium.com/@rohitrajkhorwal) 
 
-</div>
+
 
 
  <p align="center">
@@ -16,6 +12,65 @@
       <img src="./screenshot/2048.png" width="1000" />
     </a>
   </p>
+
+<div align="left">
+<a href="mailto:banrossyn@gmail.com"><img src="https://img.shields.io/badge/Gmail-EA4335.svg?logo=Gmail&logoColor=white"></a>
+</div>
+
+
+---
+
+`Note:` Please review our [Code of Conduct](./CODE_OF_CONDUCT.md) before using this project.
+# Find this Repository useful? ❤️
+
+Support it by joining stargazers for this repository. ⭐
+
+Also, [follow me on GitHub](https://github.com/AndroidWithRossyn/) for my next creations! 🤩
+
+<p align="left">
+<a href="https://github.com/AndroidWithRossyn?tab=repositories&sort=stargazers"><img alt="All Repositories" title="All Repositories" src="https://custom-icon-badges.demolab.com/badge/-Click%20Here%20For%20All%20My%20Repos-1F222E?style=for-the-badge&logoColor=white&logo=repo"/></a>
+  
+</p>
+
+
+## :zap: Latest Articles
+
+<!-- ARTICLES:START -->
+- [Network Connectivity in Android — Kotlin](https://rohitrajkhorwal.medium.com/network-connectivity-in-android-kotlin-7bd3c3adee13?source=rss-40883ee5aa3e------2)
+- [Android SMS Permissions : Understanding the Security Risks](https://rohitrajkhorwal.medium.com/android-sms-permissions-be33fe30ee41?source=rss-40883ee5aa3e------2)
+- [Say Goodbye to Toast: A Better Way to Show Messages in Your Android App](https://rohitrajkhorwal.medium.com/say-goodbye-to-toast-a-better-way-to-show-messages-in-your-android-app-58622a6578a2?source=rss-40883ee5aa3e------2)
+- [Why You Should Use Dokka 2.0.0 for Your Android Project Documentation](https://rohitrajkhorwal.medium.com/why-you-should-use-dokka-2-0-0-for-your-android-project-documentation-5d8f931a38dd?source=rss-40883ee5aa3e------2)
+- [Master Android Crash Handling: A Complete Guide to Implementing GlobalCrashHandler](https://rohitrajkhorwal.medium.com/android-crash-handling-c6252b6cbd2b?source=rss-40883ee5aa3e------2)
+<!-- ARTICLES:END -->
+
+
+
+
+## ☕ Fuel My Code
+
+<div align="center">
+  <a href="https://www.paypal.com/paypalme/banrossyn">
+    <img src="https://img.shields.io/badge/Support_My_Work-00457C?style=for-the-badge&logo=paypal&logoColor=white" alt="PayPal"/>
+  </a>
+   <a href="https://github.com/AndroidWithRossyn/AndroidWithRossyn/blob/main/donate/upi_scan.jpg?raw=true">
+    <img src="https://img.shields.io/badge/Support_via_UPI-4CAF50?style=for-the-badge&logo=google-pay&logoColor=white" alt="UPI"/>
+  </a>
+  <p><i>Your support transforms caffeine into code! ✨</i></p>
+  
+  <table>
+    <tr>
+      <td>🚀 Faster Updates</td>
+      <td>🔍 Better Documentation</td>
+      <td>🛠️ More Features</td>
+    </tr>
+  </table>
+  
+  <details>
+    <summary><b>Why Support?</b></summary>
+    <p>Every contribution helps me dedicate more time to creating high-quality open source Code. Your support directly translates to better software for everyone!</p>
+  </details>
+</div>
+
 
 ## Game Details:
 
@@ -64,21 +119,7 @@ When two tiles with the same number touch, they merge into one. When a 2048 tile
 2048 is played on a plain 4×4 grid,consisting of numbered tiles that slide when a player moves them using the four arrow keys. On each turn, a new tile randomly appears on an empty spot on the board with a value of 2 or 4. The tiles slide as far as possible in the chosen direction until they are stopped by another tile or the edge of the grid.If two tiles of the same number collide while moving, they will merge into one tile with the total value of the two tiles colliding.The resulting tile cannot merge with any other tile in the same move again. High scoring tiles emit a soft glow; The highest possible tile is 131,072. If a move causes three consecutive tiles of the same value to move simultaneously, only the two tiles that are farthest in the direction of motion will combine. If all four spaces in a row or column are filled with tiles of the same value, a move parallel to that row/column will add the first two and the last two. A scoreboard in the top right keeps track of the user's score. The user's score
 sart at zero, and increases by the value of the new tile each time two tiles meet. The game is won when a tile with the value 2048 appears on the board. Players can go beyond this and reach higher scores. When the player has no legal moves (there are no spaces and no adjacent tiles with the same value), the game ends.
 
-# Find this Repository useful? ❤️
 
-Support it by joining stargazers for this repository. ⭐
-
-Also, [follow me on GitHub](https://github.com/AndroidWithRossyn/) for my next creations! 🤩
-
-## :zap: Latest Medium Articles
-
-<!-- ARTICLES:START -->
-- [Network Connectivity in Android — Kotlin](https://rohitrajkhorwal.medium.com/network-connectivity-in-android-kotlin-7bd3c3adee13?source=rss-40883ee5aa3e------2)
-- [Android SMS Permissions : Understanding the Security Risks](https://rohitrajkhorwal.medium.com/android-sms-permissions-be33fe30ee41?source=rss-40883ee5aa3e------2)
-- [Say Goodbye to Toast: A Better Way to Show Messages in Your Android App](https://rohitrajkhorwal.medium.com/say-goodbye-to-toast-a-better-way-to-show-messages-in-your-android-app-58622a6578a2?source=rss-40883ee5aa3e------2)
-- [Why You Should Use Dokka 2.0.0 for Your Android Project Documentation](https://rohitrajkhorwal.medium.com/why-you-should-use-dokka-2-0-0-for-your-android-project-documentation-5d8f931a38dd?source=rss-40883ee5aa3e------2)
-- [Master Android Crash Handling: A Complete Guide to Implementing GlobalCrashHandler](https://rohitrajkhorwal.medium.com/android-crash-handling-c6252b6cbd2b?source=rss-40883ee5aa3e------2)
-<!-- ARTICLES:END -->
 
 ## Graphics
 ---

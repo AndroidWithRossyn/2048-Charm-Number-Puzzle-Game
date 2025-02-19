@@ -14,6 +14,8 @@ import android.util.DisplayMetrics;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowMetrics;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.OnBackPressedCallback;
@@ -43,6 +45,7 @@ public abstract class BaseActivity extends AppCompatActivity implements DefaultL
     public SharedPref sharedPref;
     Music musicService;
     boolean isBound = false;
+    Animation scaleAnim;
 
     private final ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
@@ -68,27 +71,33 @@ public abstract class BaseActivity extends AppCompatActivity implements DefaultL
 
         Window window = getWindow();
         WindowInsetsControllerCompat windowInsetsController = WindowCompat.getInsetsController(window, window.getDecorView());
-        windowInsetsController.setSystemBarsBehavior(WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
-        windowInsetsController.hide(WindowInsetsCompat.Type.systemBars());
+        if (windowInsetsController != null) {
+            windowInsetsController.setSystemBarsBehavior(WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
+            windowInsetsController.hide(WindowInsetsCompat.Type.systemBars());
+        }
 
 
         sharedPref = new SharedPref(this);
         soundPool = new SoundPool.Builder().setMaxStreams(5).build();
         clickSoundId = soundPool.load(this, R.raw.click, 1);
+        scaleAnim = AnimationUtils.loadAnimation(this, R.anim.scale_animation);
 
         Timber.tag("BaseMonitor").d("onCreate: ");
 
         bindMusicService();
+
+
     }
+
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
-        getLifecycle().removeObserver(this);
-        if (isBound /*&& musicService != null*/) {
+        if (isBound && musicService != null) {
             unbindService(serviceConnection);
             isBound = false;
         }
+        getLifecycle().removeObserver(this);
+        super.onDestroy();
     }
 
 

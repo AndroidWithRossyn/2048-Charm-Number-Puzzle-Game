@@ -7,27 +7,28 @@ import com.rossyn.blocktiles.game2048.domain.models.Position;
 
 
 public class Tile {
-    private GameBoardView callback;
+    private final GameBoardView callback;
 
     private long value;
     private int winningValue, solidLives;
     private int currentPositionX, currentPositionY;
     private int desPositionX, desPositionY;
     private int currentCellHeight, currentCellWidth;
-    private int defaultCellHeight, defaultCellWidth;
+    private final int defaultCellHeight;
+    private final int defaultCellWidth;
     private Position currentPosition, desPosition;
     private boolean isMoving = false;
     private boolean increased = false;
     private boolean isSolid = false;
     private boolean isSolidGone = false;
-    private BitmapCreator bitmapCreator = new BitmapCreator();
+    private final BitmapCreator bitmapCreator;
 
 
     public Tile(long value, Position position, GameBoardView callback) {
         this.value = value;
         this.callback = callback;
         this.winningValue = callback.getWinningValue();
-
+        bitmapCreator = new BitmapCreator(callback.getContext());
         defaultCellHeight = currentCellHeight = bitmapCreator.getCellDefaultHeight();
         defaultCellWidth = currentCellWidth = bitmapCreator.getCellDefaultWidth();
 
@@ -41,7 +42,7 @@ public class Tile {
     public Tile(int value, Position position, GameBoardView callback, int solidLives) {
         this.value = value;
         this.callback = callback;
-
+        bitmapCreator = new BitmapCreator(callback.getContext());
         defaultCellHeight = currentCellHeight = bitmapCreator.getCellDefaultHeight();
         defaultCellWidth = currentCellWidth = bitmapCreator.getCellDefaultWidth();
 

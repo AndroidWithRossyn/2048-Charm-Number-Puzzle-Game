@@ -1,24 +1,19 @@
 package com.rossyn.blocktiles.game2048.presentation.adapter;
 
-import static android.content.Context.LAYOUT_INFLATER_SERVICE;
-
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
 
+import com.rossyn.blocktiles.game2048.databinding.ScoreLineBinding;
 import com.rossyn.blocktiles.game2048.domain.models.ScoreModel;
-import com.rossyn.blocktiles.game2048.R;
 
 import java.util.List;
 
 public class ScoreAdapter extends BaseAdapter {
-    private List<ScoreModel> scoreModelList;
+    private final List<ScoreModel> scoreModelList;
 
-    public ScoreAdapter(List<ScoreModel> scoreModelList, Context context) {
+    public ScoreAdapter(List<ScoreModel> scoreModelList) {
         this.scoreModelList = scoreModelList;
     }
 
@@ -34,7 +29,7 @@ public class ScoreAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
@@ -44,22 +39,21 @@ public class ScoreAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        ScoreLineBinding binding;
         if (convertView == null) {
-            LayoutInflater layoutInflater = (LayoutInflater) parent.getContext().getSystemService(LAYOUT_INFLATER_SERVICE);
-            assert layoutInflater != null;
-            convertView = layoutInflater.inflate(R.layout.score_line, parent, false);
+            binding = ScoreLineBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+            convertView = binding.getRoot();
+            convertView.setTag(binding);
+        } else {
+            binding = (ScoreLineBinding) convertView.getTag();
         }
+
+
         ScoreModel scoreModel = scoreModelList.get(position);
-        ImageView icon = convertView.findViewById(R.id.adapt_score_trophy);
-        TextView tvBoardType = convertView.findViewById(R.id.adapt_tv_board_type);
-        TextView tvScore = convertView.findViewById(R.id.adapt_tv_score);
-
-        icon.setImageResource(scoreModel.getIcon());
-        tvScore.setText(String.valueOf(scoreModel.getScore()));
-
-        tvBoardType.setText(scoreModel.getBoardType());
+        binding.adaptScoreTrophy.setImageResource(scoreModel.getIcon());
+        binding.adaptTvScore.setText(String.valueOf(scoreModel.getScore()));
+        binding.adaptTvBoardType.setText(scoreModel.getBoardType());
 
         return convertView;
-
     }
 }

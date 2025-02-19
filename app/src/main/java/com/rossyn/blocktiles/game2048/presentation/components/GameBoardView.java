@@ -1,5 +1,6 @@
 package com.rossyn.blocktiles.game2048.presentation.components;
 
+import android.content.Context;
 import android.graphics.Canvas;
 
 import com.rossyn.blocktiles.game2048.domain.models.Position;
@@ -43,6 +44,10 @@ public final class GameBoardView {
         boardIsInitialized = false;
         this.gameMode = gameMode;
         this.winningValue = (int) Math.pow(exponent, 11);
+    }
+
+    public Context getContext() {
+        return callback.getContext();
     }
 
     public boolean isGameOver() {
