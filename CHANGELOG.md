@@ -1,3 +1,12 @@
+## 21 FEB 2025
+
+- Fixed various bugs and optimized layout files.
+- Improved settings, game over, and win dialogs.
+- Implemented a robust Music on/off feature.
+- Added score array list creation in dialogs.
+- Registered shared preference listener.
+- Ensured the screen stays on during gameplay.
+
 ## 19 FEB 2025
 
 - java project migrated with view binding

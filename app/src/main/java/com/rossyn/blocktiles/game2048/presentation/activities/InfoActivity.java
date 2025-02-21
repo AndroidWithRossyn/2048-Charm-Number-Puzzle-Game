@@ -1,21 +1,11 @@
 package com.rossyn.blocktiles.game2048.presentation.activities;
 
 
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.TextView;
 
-import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.rossyn.blocktiles.game2048.BuildConfig;
-import com.rossyn.blocktiles.game2048.R;
 import com.rossyn.blocktiles.game2048.databinding.InfoActivityBinding;
 
 

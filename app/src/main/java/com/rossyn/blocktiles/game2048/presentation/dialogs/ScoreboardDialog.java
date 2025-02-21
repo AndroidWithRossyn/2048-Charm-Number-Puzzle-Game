@@ -1,10 +1,9 @@
 package com.rossyn.blocktiles.game2048.presentation.dialogs;
 
-import static android.content.Context.MODE_PRIVATE;
+import static com.rossyn.blocktiles.game2048.data.prefs.SharedPref.TOP_SCORE;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -14,17 +13,17 @@ import android.view.animation.AnimationUtils;
 import androidx.annotation.NonNull;
 
 import com.rossyn.blocktiles.game2048.R;
-import com.rossyn.blocktiles.game2048.data.prefs.ScoreBoardBuilder;
 import com.rossyn.blocktiles.game2048.data.prefs.SharedPref;
 import com.rossyn.blocktiles.game2048.databinding.DialogScoreboardBinding;
 import com.rossyn.blocktiles.game2048.domain.models.ScoreModel;
 import com.rossyn.blocktiles.game2048.presentation.adapter.ScoreAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ScoreboardDialog extends Dialog {
     private DialogScoreboardBinding binding;
-    private final SharedPreferences sharedPreferences;
+    private final SharedPref sharedPref;
     private final ScoreboardDialogListener listener;
 
     private final Animation rightInAnim;
@@ -46,7 +45,7 @@ public class ScoreboardDialog extends Dialog {
 
     public ScoreboardDialog(@NonNull Context context, @NonNull ScoreboardDialogListener listener) {
         super(context);
-        this.sharedPreferences = context.getSharedPreferences(SharedPref.SHARED_PREF_FILE_NAME, MODE_PRIVATE);
+        this.sharedPref = new SharedPref(context);
         this.listener = listener;
         rightInAnim = AnimationUtils.loadAnimation(context, R.anim.slide_in_right_side);
         leftInAnim = AnimationUtils.loadAnimation(context, R.anim.slide_in_left_side);
@@ -69,9 +68,9 @@ public class ScoreboardDialog extends Dialog {
         }
 
 
-        ArrayList<ScoreModel> classicScoreModels = ScoreBoardBuilder.createClassicArrayList(sharedPreferences, "0");
-        ArrayList<ScoreModel> blocksScoreModels = ScoreBoardBuilder.createClassicArrayList(sharedPreferences, "1");
-        ArrayList<ScoreModel> shuffleScoreModels = ScoreBoardBuilder.createClassicArrayList(sharedPreferences, "2");
+        ArrayList<ScoreModel> classicScoreModels = createClassicArrayList("0");
+        ArrayList<ScoreModel> blocksScoreModels = createClassicArrayList("1");
+        ArrayList<ScoreModel> shuffleScoreModels = createClassicArrayList("2");
 
 
         scoreAdapterClassic = new ScoreAdapter(classicScoreModels);
@@ -177,5 +176,45 @@ public class ScoreboardDialog extends Dialog {
 
     private void playClick() {
         listener.playSound();
+    }
+
+
+    /**
+     * Creates an ArrayList of ScoreModel objects for the classic game mode.
+     *
+     * @param gameMode The game mode identifier to differentiate between different game modes.
+     * @return An ArrayList of ScoreModel objects sorted by score in descending order.
+     */
+    public ArrayList<ScoreModel> createClassicArrayList(String gameMode) {
+
+        ArrayList<ScoreModel> scoreModels = new ArrayList<>();
+        // Add ScoreModel objects for different game board sizes
+        scoreModels.add(new ScoreModel("6x5", sharedPref.getLong(TOP_SCORE + gameMode + 6 + 5), R.drawable.icon_trophy_empty));
+        scoreModels.add(new ScoreModel("5x4", sharedPref.getLong(TOP_SCORE + gameMode + 5 + 4), R.drawable.icon_trophy_empty));
+        scoreModels.add(new ScoreModel("5x3", sharedPref.getLong(TOP_SCORE + gameMode + 5 + 3), R.drawable.icon_trophy_empty));
+        scoreModels.add(new ScoreModel("4x3", sharedPref.getLong(TOP_SCORE + gameMode + 4 + 3), R.drawable.icon_trophy_empty));
+        scoreModels.add(new ScoreModel("8x8", sharedPref.getLong(TOP_SCORE + gameMode + 8 + 8), R.drawable.icon_trophy_empty));
+        scoreModels.add(new ScoreModel("6x6", sharedPref.getLong(TOP_SCORE + gameMode + 6 + 6), R.drawable.icon_trophy_empty));
+        scoreModels.add(new ScoreModel("5x5", sharedPref.getLong(TOP_SCORE + gameMode + 5 + 5), R.drawable.icon_trophy_empty));
+        scoreModels.add(new ScoreModel("4x4", sharedPref.getLong(TOP_SCORE + gameMode + 4 + 4), R.drawable.icon_trophy_empty));
+        scoreModels.add(new ScoreModel("3x3", sharedPref.getLong(TOP_SCORE + gameMode + 3 + 3), R.drawable.icon_trophy_empty));
+
+        // Sort the score models by score in ascending order
+        scoreModels.sort((p1, p2) -> (int) (p1.getScore() - p2.getScore()));
+        // Reverse the order to get descending order
+        Collections.reverse(scoreModels);
+
+        // Set icons for the top three scores if they are not zero
+        if (scoreModels.get(0).getScore() != 0) {
+            scoreModels.get(0).setIcon(R.drawable.icon_trophy_gold);
+        }
+        if (scoreModels.get(1).getScore() != 0) {
+            scoreModels.get(1).setIcon(R.drawable.icon_trophy_silver);
+        }
+        if (scoreModels.get(2).getScore() != 0) {
+            scoreModels.get(2).setIcon(R.drawable.icon_trophy_bronze);
+        }
+
+        return scoreModels;
     }
 }

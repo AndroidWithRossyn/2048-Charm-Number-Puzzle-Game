@@ -12,8 +12,8 @@ android {
         minSdk = 24
         targetSdk = 35
         versionCode = 1
-        // versionName = "1.0.0"
-        versionName = "0.dev.testing"
+         versionName = "1.0.0"
+//        versionName = "0.dev.testing"
         vectorDrawables.useSupportLibrary = true
         renderscriptTargetApi = 24
         renderscriptSupportModeEnabled = true

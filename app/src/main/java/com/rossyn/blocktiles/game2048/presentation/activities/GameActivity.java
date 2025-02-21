@@ -1,8 +1,6 @@
 package com.rossyn.blocktiles.game2048.presentation.activities;
 
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.media.SoundPool;
@@ -15,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.view.ViewCompat;
+import androidx.lifecycle.LifecycleOwner;
 
 import com.rossyn.blocktiles.game2048.R;
 import com.rossyn.blocktiles.game2048.databinding.GameActivityBinding;
@@ -60,6 +59,7 @@ public class GameActivity extends BaseActivity implements GameListener {
             v.setPadding(0, 0, 0, 0);
             return windowInsets;
         });
+        keepScreenOn();
 
         changeLayout();
 
@@ -78,7 +78,7 @@ public class GameActivity extends BaseActivity implements GameListener {
 
         binding.btnSettings.setOnClickListener(v -> {
             playClick();
-            SettingsDialog settingsDialog = new SettingsDialog(GameActivity.this, sharedPref, this::playClick);
+            SettingsDialog settingsDialog = new SettingsDialog(GameActivity.this, this::playClick);
             settingsDialog.show();
         });
 
@@ -102,7 +102,6 @@ public class GameActivity extends BaseActivity implements GameListener {
         });
 
     }
-
 
 
     public int getBoardRows() {
@@ -170,6 +169,11 @@ public class GameActivity extends BaseActivity implements GameListener {
         }
     }
 
+    @Override
+    public void onDestroy(@NonNull LifecycleOwner owner) {
+        keepScreenOff();
+        super.onDestroy(owner);
+    }
 
     @Override
     public void surfaceCreated(@NonNull SurfaceHolder holder) {

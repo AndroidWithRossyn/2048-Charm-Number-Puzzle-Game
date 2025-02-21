@@ -144,11 +144,11 @@
             android:clickable="true"
             android:focusable="true"
             android:gravity="center"
-            android:paddingHorizontal="60dp"
+            android:paddingHorizontal="50dp"
             android:paddingVertical="7dp"
             android:text="@string/close"
             android:textColor="@android:color/white"
-            android:textSize="17sp" />
+            android:textSize="@dimen/mid_btn" />
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>

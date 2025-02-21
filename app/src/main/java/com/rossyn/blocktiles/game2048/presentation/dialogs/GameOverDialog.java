@@ -2,7 +2,10 @@ package com.rossyn.blocktiles.game2048.presentation.dialogs;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
@@ -38,7 +41,10 @@ public class GameOverDialog extends Dialog {
         super.onCreate(savedInstanceState);
         binding = DialogGameoverBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        Objects.requireNonNull(getWindow()).setBackgroundDrawableResource(android.R.color.transparent);
+        if (getWindow() != null) {
+//            getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
         setCancelable(false);
         setCanceledOnTouchOutside(false);
 

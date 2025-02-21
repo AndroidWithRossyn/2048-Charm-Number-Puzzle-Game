@@ -7,9 +7,7 @@ import android.os.Looper;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
-import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.rossyn.blocktiles.game2048.R;
 import com.rossyn.blocktiles.game2048.databinding.SplashActivityBinding;

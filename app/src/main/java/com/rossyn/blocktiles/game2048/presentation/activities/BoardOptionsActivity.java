@@ -1,42 +1,22 @@
 package com.rossyn.blocktiles.game2048.presentation.activities;
 
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.IBinder;
-import android.os.PowerManager;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.core.content.ContextCompat;
-import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.rossyn.blocktiles.game2048.R;
 import com.rossyn.blocktiles.game2048.databinding.BoardOptionsActivityBinding;
 import com.rossyn.blocktiles.game2048.domain.models.BoardType;
-import com.rossyn.blocktiles.game2048.presentation.utils.AnimExt;
-import com.rossyn.blocktiles.game2048.services.Music;
-import com.rossyn.blocktiles.game2048.presentation.interfaces.OnHomePressedListener;
-import com.rossyn.blocktiles.game2048.data.prefs.SharedPref;
 
 import java.util.ArrayList;
 

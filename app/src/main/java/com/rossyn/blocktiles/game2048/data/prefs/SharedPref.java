@@ -18,6 +18,24 @@ public class SharedPref {
         preferences = context.getApplicationContext().getSharedPreferences(SHARED_PREF_FILE_NAME, Context.MODE_PRIVATE);
     }
 
+    /**
+     * Registers a SharedPreferences.OnSharedPreferenceChangeListener.
+     *
+     * @param listener The listener to be registered.
+     */
+    public void registerOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener listener) {
+        preferences.registerOnSharedPreferenceChangeListener(listener);
+    }
+
+    /**
+     * Unregisters a SharedPreferences.OnSharedPreferenceChangeListener.
+     *
+     * @param listener The listener to be unregistered.
+     */
+    public void unregisterOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener listener) {
+        preferences.unregisterOnSharedPreferenceChangeListener(listener);
+    }
+
     public void setBoolean(String key, boolean value) {
         preferences.edit().putBoolean(key, value).apply();
     }

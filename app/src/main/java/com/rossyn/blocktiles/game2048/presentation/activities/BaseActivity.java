@@ -5,6 +5,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.SoundPool;
 import android.os.Build;
@@ -37,7 +38,7 @@ import java.util.List;
 
 import timber.log.Timber;
 
-public abstract class BaseActivity extends AppCompatActivity implements DefaultLifecycleObserver {
+public abstract class BaseActivity extends AppCompatActivity implements DefaultLifecycleObserver, SharedPreferences.OnSharedPreferenceChangeListener {
 
     private SoundPool soundPool;
     private int clickSoundId = 0;
@@ -85,6 +86,7 @@ public abstract class BaseActivity extends AppCompatActivity implements DefaultL
         Timber.tag("BaseMonitor").d("onCreate: ");
 
         bindMusicService();
+        sharedPref.registerOnSharedPreferenceChangeListener(this);
 
 
     }
@@ -97,6 +99,7 @@ public abstract class BaseActivity extends AppCompatActivity implements DefaultL
             isBound = false;
         }
         getLifecycle().removeObserver(this);
+        sharedPref.unregisterOnSharedPreferenceChangeListener(this);
         super.onDestroy();
     }
 
@@ -221,4 +224,17 @@ public abstract class BaseActivity extends AppCompatActivity implements DefaultL
         startActivity(new Intent(this, destination));
     }
 
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, @Nullable String key) {
+        if (key != null) {
+            if (key.equals(SharedPref.MUTE_MUSIC)) {
+                if (sharedPref.getBoolean(SharedPref.MUTE_MUSIC)) {
+                    if (musicService != null) musicService.pauseMusic();
+                } else {
+                    if (musicService != null) musicService.resumeMusic();
+                }
+            }
+        }
+    }
 }

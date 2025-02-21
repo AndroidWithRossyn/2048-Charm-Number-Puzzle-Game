@@ -1,66 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="@dimen/_300sdp"
-    android:layout_height="@dimen/_350sdp"
-    android:background="@drawable/popup_background"
-    android:padding="@dimen/_28sdp">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/game_over_textview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_17sdp"
-        android:layout_marginTop="@dimen/_17sdp"
-        android:layout_marginEnd="@dimen/_17sdp"
-        android:layout_marginBottom="@dimen/_17sdp"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="@dimen/_280sdp"
+        android:background="@drawable/popup_background"
         android:gravity="center"
-        android:text="@string/game_over_title"
-        android:textAlignment="center"
-        android:textSize="@dimen/_20sdp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/game_over_textview"
-        android:layout_centerInParent="true"
-        android:background="@drawable/shape_rectangle_gray"
         android:orientation="vertical"
-        android:padding="@dimen/_7sdp">
+        android:padding="@dimen/_28sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/game_over_textview"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_7sdp"
             android:gravity="center"
-            android:text="@string/your_score"
+            android:text="@string/game_over_title"
             android:textAlignment="center"
-            android:textSize="@dimen/_12ssp" />
+            android:textSize="25sp" />
 
-        <TextView
-            android:id="@+id/game_over_score_num"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/game_over_textview"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/shape_rectangle_gray"
+            android:orientation="vertical"
+            android:padding="@dimen/_7sdp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:gravity="center"
+                android:text="@string/your_score"
+                android:textAlignment="center"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/game_over_score_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:textAlignment="center"
+                android:textSize="25sp" />
+        </LinearLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/btn_play_again"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="5dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rectangle_yellow"
+            android:paddingHorizontal="@dimen/_35sdp"
+            android:paddingVertical="@dimen/_10sdp"
+            android:text="@string/play_again"
             android:textAlignment="center"
-            android:textSize="@dimen/_20sdp" />
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/btn_play_again"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/rectangle_yellow"
-        android:paddingHorizontal="@dimen/_35sdp"
-        android:paddingVertical="@dimen/_10sdp"
-        android:text="@string/play_again"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="@dimen/mid_btn"/>
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

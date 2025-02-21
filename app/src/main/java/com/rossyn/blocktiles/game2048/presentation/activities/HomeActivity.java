@@ -57,7 +57,7 @@ public class HomeActivity extends BaseActivity {
         binding.btnSettings.startAnimation(scaleAnim);
         binding.btnSettings.setOnClickListener(v -> {
             playClick();
-            SettingsDialog settingsDialog = new SettingsDialog(this, sharedPref, this::playClick);
+            SettingsDialog settingsDialog = new SettingsDialog(this, this::playClick);
             settingsDialog.show();
         });
 

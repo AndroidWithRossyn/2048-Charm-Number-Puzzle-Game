@@ -14,8 +14,6 @@ import com.rossyn.blocktiles.game2048.R;
 import com.rossyn.blocktiles.game2048.data.prefs.SharedPref;
 import com.rossyn.blocktiles.game2048.databinding.DialogSettingBinding;
 
-import java.util.Objects;
-
 public class SettingsDialog extends Dialog {
 
     public interface SettingsDialogListener {
@@ -27,9 +25,9 @@ public class SettingsDialog extends Dialog {
     private final SharedPref sharedPref;
     private final Animation scaleAnim;
 
-    public SettingsDialog(@NonNull Context context, @NonNull SharedPref sharedPref, @NonNull SettingsDialogListener listener) {
+    public SettingsDialog(@NonNull Context context, @NonNull SettingsDialogListener listener) {
         super(context);
-        this.sharedPref = sharedPref;
+        this.sharedPref = new SharedPref(context);
         this.listener = listener;
         scaleAnim = AnimationUtils.loadAnimation(context, R.anim.scale_animation);
     }
@@ -39,10 +37,10 @@ public class SettingsDialog extends Dialog {
         super.onCreate(savedInstanceState);
         binding = DialogSettingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-
-        Objects.requireNonNull(getWindow())
-                .setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        if (getWindow() != null) {
+//            getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
         setCancelable(true);
 
 
