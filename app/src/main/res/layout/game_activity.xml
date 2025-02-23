@@ -155,7 +155,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_15sdp"
                 android:layout_marginBottom="@dimen/vertical_space"
-                android:background="@drawable/shape_oval_orange"
+                android:background="@drawable/menu_bottom_bar"
                 android:backgroundTint="#ABFDAE6F"
                 android:backgroundTintMode="multiply"
                 android:elevation="10dp"
