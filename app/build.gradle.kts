@@ -97,9 +97,9 @@ dependencies {
     //timber
     implementation(libs.timber)
 
-    debugImplementation(libs.leakcanary.android)
+//    debugImplementation(libs.leakcanary.android)
 
-    dokkaPlugin(libs.android.documentation.plugin)
+//    dokkaPlugin(libs.android.documentation.plugin)
 
 
     implementation (libs.androidx.lifecycle.process)
